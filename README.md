@@ -26,7 +26,7 @@ redirect_url = 'https://www.google.ca'
 ds = DocusignDtr::Auth.new(integrator_key: integrator_key, secret_key: secret_key, redirect_uri: redirect_url)
 ds.auth_uri.to_s
 # "https://account-d.docusign.com/oauth/auth?response_type=code&scope=signature&client_id=TRUST_NO_ONEstate=TRUST_NO_ONE&redirect_uri=https%3A%2F%2Fwww.google.ca"
-```ruby
+```
 
 Send your client to the auth_uri above and they will be redirected to the redirect_url  (for now its google.ca)
 
