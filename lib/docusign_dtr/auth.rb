@@ -57,11 +57,24 @@ module DocusignDtr
       @auth_uri = URI("#{base_uri}oauth/auth")
       @auth_uri.query = URI.encode_www_form(
         response_type: :code,
-        scope: :signature,
+        scope: dtr_scope,
         client_id: @config.integrator_key,
         state: @state,
         redirect_uri: @config.redirect_uri
       )
+    end
+
+    def dtr_scope
+      %w[
+        dtr.documents.read
+        dtr.documents.write
+        dtr.rooms.read
+        dtr.rooms.write
+        dtr.company.read
+        dtr.company.write
+        dtr.profile.read
+        dtr.profile.write
+      ].join(' ')
     end
 
     def encoded_keys

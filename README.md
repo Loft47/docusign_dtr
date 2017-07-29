@@ -33,8 +33,8 @@ Send your client to the auth_uri above and they will be redirected to the redire
 ```ruby
 url='https://www.google.ca/?code=TRUST_NO_ONE&state=TRUST_NO_ONE'
 parsed_url = ds.parse_url_response(url)
-token = ds.get_token(response_code: parsed_url.code, state: parsed_url.state).access_token
-api = DocusignDtr::Client.new(token: token)
+access_token = ds.get_token(response_code: parsed_url.code, state: parsed_url.state).access_token
+api = DocusignDtr::Client.new(access_token: access_token)
 offices = api.Office.all
 ```
 
