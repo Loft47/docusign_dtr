@@ -1,0 +1,47 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Include:
+    - '**/*.gemspec'
+    - '**/*.podspec'
+    - '**/*.jbuilder'
+    - '**/*.rake'
+    - '**/*.opal'
+    - '**/config.ru'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+    - '**/Podfile'
+    - '**/Thorfile'
+    - '**/Vagrantfile'
+    - '**/Berksfile'
+    - '**/Cheffile'
+    - '**/Vagabondfile'
+  Exclude:
+    - '**/Guardfile'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'log/**/*'
+    - 'dotloop.gemspec'
+Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Max: 100
+Metrics/LineLength:
+  Max: 120
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+Style/RaiseArgs:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+Style/MethodName:
+  Enabled: false
