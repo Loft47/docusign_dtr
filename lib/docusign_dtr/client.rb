@@ -12,7 +12,7 @@ module DocusignDtr
 
     def get(page, params = {})
       response = raw(page, params)
-      response
+      self.class.snakify(response)
     end
 
     def raw(page, params = {})
@@ -38,6 +38,14 @@ module DocusignDtr
 
     def Office
       @office ||= DocusignDtr::Office.new(client: self)
+    end
+
+    def self.snakify(hash)
+      if hash.is_a? Array
+        hash.map(&:to_snake_keys)
+      else
+        hash.to_snake_keys
+      end
     end
 
     private

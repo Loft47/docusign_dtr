@@ -10,7 +10,7 @@ module DocusignDtr
     attr_accessor :state
 
     def initialize(integrator_key:, secret_key:, redirect_uri:, test_mode: true, application: 'docusign_dtr')
-      @config = OpenStruct.new(
+      @config = DocusignDtr::Models::AuthConfig.new(
         integrator_key: integrator_key,
         secret_key: secret_key,
         redirect_uri: redirect_uri,
@@ -27,14 +27,14 @@ module DocusignDtr
       params = { grant_type: :authorization_code, code: response_code }
       response = self.class.post("#{base_uri}oauth/token", query: params, headers: headers, timeout: 60)
       handle_error(response.code) if response.code != 200
-      OpenStruct.new(response.parsed_response)
+      DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
     end
 
     def refresh_token(refresh_token:)
       params = { grant_type: :refresh_token, refresh_token: refresh_token }
       response = self.class.post("#{base_uri}oauth/token", query: params, headers: headers, timeout: 60)
       handle_error(response.code) if response.code != 200
-      OpenStruct.new(response.parsed_response)
+      DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
     end
 
     def parse_url_response(url)
