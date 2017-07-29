@@ -7,7 +7,7 @@ module DocusignDtr
     end
 
     def all
-      @client.get('/offices').map do |office_attrs|
+      @client.get('/offices')['offices'].map do |office_attrs|
         office = DocusignDtr::Models::Office.new(office_attrs)
         office.client = client
         office
