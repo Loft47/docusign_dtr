@@ -36,8 +36,8 @@ module DocusignDtr
       end
     end
 
-    def Office
-      @office ||= DocusignDtr::Office.new(client: self)
+    def Office # rubocop:disable  Naming/MethodName
+      @office ||= DocusignDtr::Office.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
     def self.snakify(hash)

@@ -19,7 +19,6 @@ module DocusignDtr
       )
       @state = SecureRandom.uuid
       set_auth_url
-      true
     end
 
     def get_token(response_code:, state: nil)
