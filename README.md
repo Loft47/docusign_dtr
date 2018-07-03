@@ -38,6 +38,8 @@ api = DocusignDtr::Client.new(access_token: access_token)
 offices = api.Office.all
 ```
 
+Now you can use the ```access_token``` in the docusign [api explorer](https://stage.cartavi.com/restapi/swashbuckle/ui/index).
+
 :TODO:
 
 ## Development
