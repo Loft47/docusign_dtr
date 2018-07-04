@@ -3,10 +3,9 @@ module DocusignDtr
     class Office
       include Virtus.model
       attribute :id
-      attribute :name
+      attribute :office_name
       attribute :address, DocusignDtr::Models::Address
       attribute :phone
-      attribute :regionId
       attr_accessor :client
     end
   end
