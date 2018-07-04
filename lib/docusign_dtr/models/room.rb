@@ -6,7 +6,7 @@ module DocusignDtr
       attribute :room_name
       attribute :mls_id
       attribute :address, DocusignDtr::Models::Address
-      attribute :owners #, DocusignDtr::Models::Owner
+      attribute :owners # , DocusignDtr::Models::Owner
       attribute :office_id
       attribute :latitude
       attribute :longitude

@@ -8,10 +8,10 @@ RSpec.describe DocusignDtr::Models::Address do
       address2: 'PO BOX 1234',
       city: 'Testville',
       county: 'USA',
-      stateId: 'WA',
-      postalCode: '30210',
-      countryId: 'USA',
-      timeZoneId: 'PDT'
+      state_id: 'WA',
+      postal_code: '30210',
+      country_id: 'USA',
+      time_zone_id: 'PDT'
     )
     address.client = client
     address
@@ -24,10 +24,10 @@ RSpec.describe DocusignDtr::Models::Address do
         address2: 'PO BOX 1234',
         city: 'Testville',
         county: 'USA',
-        stateId: 'WA',
-        postalCode: '30210',
-        countryId: 'USA',
-        timeZoneId: 'PDT'
+        state_id: 'WA',
+        postal_code: '30210',
+        country_id: 'USA',
+        time_zone_id: 'PDT'
       )
     end
   end
