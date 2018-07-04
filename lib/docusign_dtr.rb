@@ -9,11 +9,13 @@ require 'docusign_dtr/auth/code'
 require 'docusign_dtr/auth/jwt'
 require 'docusign_dtr/client'
 require 'docusign_dtr/office'
+require 'docusign_dtr/room'
 
 require 'docusign_dtr/models/auth_config'
 require 'docusign_dtr/models/auth_token_response'
 require 'docusign_dtr/models/address'
 require 'docusign_dtr/models/office'
+require 'docusign_dtr/models/room'
 
 module DocusignDtr
   # Your code goes here...

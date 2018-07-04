@@ -40,6 +40,10 @@ module DocusignDtr
       @office ||= DocusignDtr::Office.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
+    def Room # rubocop:disable  Naming/MethodName
+      @room ||= DocusignDtr::Room.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
     def self.snakify(hash)
       if hash.is_a? Array
         hash.map(&:to_snake_keys)
