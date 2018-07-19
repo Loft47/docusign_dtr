@@ -1,10 +1,12 @@
 require 'plissken'
 require 'httparty'
 require 'virtus'
+require 'jwt'
 
 require 'docusign_dtr/version'
 require 'docusign_dtr/exceptions'
-require 'docusign_dtr/auth'
+require 'docusign_dtr/auth/code'
+require 'docusign_dtr/auth/jwt'
 require 'docusign_dtr/client'
 require 'docusign_dtr/office'
 
@@ -15,4 +17,14 @@ require 'docusign_dtr/models/office'
 
 module DocusignDtr
   # Your code goes here...
+  DTR_SCOPE = %w[
+    dtr.documents.read
+    dtr.documents.write
+    dtr.rooms.read
+    dtr.rooms.write
+    dtr.company.read
+    dtr.company.write
+    dtr.profile.read
+    dtr.profile.write
+  ].freeze
 end

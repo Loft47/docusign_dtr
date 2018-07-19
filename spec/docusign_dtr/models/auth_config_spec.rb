@@ -7,7 +7,9 @@ RSpec.describe DocusignDtr::Models::AuthConfig do
       secret_key: '1234',
       redirect_uri: 'https://www.bookface.com',
       test_mode: true,
-      application: 'TestAppplication'
+      application: 'TestAppplication',
+      private_key: :my_private_key,
+      user_guid: :user_guid
     )
   end
 
@@ -18,7 +20,9 @@ RSpec.describe DocusignDtr::Models::AuthConfig do
         secret_key: '1234',
         redirect_uri: 'https://www.bookface.com',
         test_mode: true,
-        application: 'TestAppplication'
+        application: 'TestAppplication',
+        private_key: :my_private_key,
+        user_guid: :user_guid
       )
     end
   end

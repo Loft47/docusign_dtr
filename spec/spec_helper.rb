@@ -4,3 +4,4 @@ require 'bundler/setup'
 Bundler.setup
 require 'pry'
 require 'docusign_dtr'
+require 'webmock/rspec'
