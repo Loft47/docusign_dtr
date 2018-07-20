@@ -3,12 +3,13 @@ require_relative '../../spec_helper'
 RSpec.describe DocusignDtr::Models::AuthConfig do
   subject do
     DocusignDtr::Models::AuthConfig.new(
-      integrator_key: '1234',
-      secret_key: '1234',
-      redirect_uri: 'https://www.bookface.com',
-      test_mode: true,
       application: 'TestAppplication',
+      integrator_key: '1234',
       private_key: :my_private_key,
+      redirect_uri: 'https://www.bookface.com',
+      secret_key: '1234',
+      state: :state,
+      test_mode: true,
       user_guid: :user_guid
     )
   end
@@ -16,12 +17,13 @@ RSpec.describe DocusignDtr::Models::AuthConfig do
   describe '#attributes' do
     it 'has them' do
       expect(subject).to have_attributes(
-        integrator_key: '1234',
-        secret_key: '1234',
-        redirect_uri: 'https://www.bookface.com',
-        test_mode: true,
         application: 'TestAppplication',
+        integrator_key: '1234',
         private_key: :my_private_key,
+        redirect_uri: 'https://www.bookface.com',
+        secret_key: '1234',
+        state: :state,
+        test_mode: true,
         user_guid: :user_guid
       )
     end

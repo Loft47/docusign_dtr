@@ -5,6 +5,7 @@ require 'jwt'
 
 require 'docusign_dtr/version'
 require 'docusign_dtr/exceptions'
+require 'docusign_dtr/auth/base'
 require 'docusign_dtr/auth/code'
 require 'docusign_dtr/auth/jwt'
 require 'docusign_dtr/client'

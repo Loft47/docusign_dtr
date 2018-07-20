@@ -2,12 +2,13 @@ module DocusignDtr
   module Models
     class AuthConfig
       include Virtus.model
-      attribute :integrator_key
-      attribute :secret_key
-      attribute :redirect_uri
-      attribute :test_mode
       attribute :application
+      attribute :integrator_key
       attribute :private_key
+      attribute :redirect_uri
+      attribute :secret_key
+      attribute :state
+      attribute :test_mode
       attribute :user_guid
     end
   end
