@@ -6,10 +6,9 @@ RSpec.describe DocusignDtr::Models::Office do
   subject do
     office = DocusignDtr::Models::Office.new(
       id: 99,
-      name: 'Main Office',
+      office_name: 'Main Office',
       address: address,
-      phone: '555-555-5555',
-      regionId: 77
+      phone: '555-555-5555'
     )
     office.client = client
     office
@@ -19,10 +18,9 @@ RSpec.describe DocusignDtr::Models::Office do
     it 'has them' do
       expect(subject).to have_attributes(
         id: 99,
-        name: 'Main Office',
+        office_name: 'Main Office',
         address: address,
-        phone: '555-555-5555',
-        regionId: 77
+        phone: '555-555-5555'
       )
     end
   end

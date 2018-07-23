@@ -6,10 +6,10 @@ module DocusignDtr
       attribute :address2
       attribute :city
       attribute :county
-      attribute :stateId
-      attribute :postalCode
-      attribute :countryId
-      attribute :timeZoneId
+      attribute :state_id
+      attribute :postal_code
+      attribute :country_id
+      attribute :time_zone_id
 
       attr_accessor :client
     end
