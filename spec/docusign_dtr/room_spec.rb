@@ -27,4 +27,23 @@ RSpec.describe DocusignDtr::Room do
       expect(subject.all.first).to be_a DocusignDtr::Models::Room
     end
   end
+
+  describe '#find' do
+    it 'returns one room object' do
+      expect(client).to receive(:get).and_return(room)
+      expect(subject.find(room_id: room['room_id'])).to be_a DocusignDtr::Models::Room
+    end
+  end
+
+  describe '#create' do
+    skip
+  end
+
+  describe '#destroy' do
+    skip
+  end
+
+  describe '#update' do
+    skip
+  end
 end

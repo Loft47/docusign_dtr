@@ -13,5 +13,24 @@ module DocusignDtr
         room
       end
     end
+
+    def find(room_id:)
+      room_attrs = @client.get("/rooms/#{room_id}")
+      room = DocusignDtr::Models::Room.new(room_attrs)
+      room.client = client
+      room
+    end
+
+    def create(room_id:)
+
+    end
+
+    def destroy(room_id:)
+
+    end
+
+    def update(room_id:)
+
+    end
   end
 end
