@@ -8,6 +8,7 @@ module DocusignDtr
       attribute :address, DocusignDtr::Models::Address
       attribute :owners # , DocusignDtr::Models::Owner
       attribute :office_id
+      attribute :last_updated_date
       attribute :latitude
       attribute :longitude
       attribute :closed_status_id
