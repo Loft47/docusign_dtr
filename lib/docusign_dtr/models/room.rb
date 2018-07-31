@@ -3,7 +3,7 @@ module DocusignDtr
     class Room
       include Virtus.model
       attribute :actual_close_date
-      attribute :address #, DocusignDtr::Models::Address
+      attribute :address # , DocusignDtr::Models::Address
       attribute :appraisal_contingency_date
       attribute :binding_date
       attribute :closed_date
@@ -66,7 +66,11 @@ module DocusignDtr
       attribute :view_link
       attribute :year_built
       attr_accessor :client
+
+      def documents
+        return [] unless room_id
+        ::DocusignDtr::Document.new(client: client).all_by_room_id(room_id)
+      end
     end
   end
 end
-

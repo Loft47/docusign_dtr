@@ -40,4 +40,19 @@ RSpec.describe DocusignDtr::Models::Room do
       )
     end
   end
+
+  describe '#methods' do
+    let(:documents) { { 'documents' => [document] } }
+    let(:document) do
+      {
+        id: 11,
+        room_id: 99
+      }
+    end
+
+    it '#documents' do
+      expect(client).to receive(:get).and_return(documents)
+      expect(subject.documents.first).to be_a DocusignDtr::Models::Document
+    end
+  end
 end
