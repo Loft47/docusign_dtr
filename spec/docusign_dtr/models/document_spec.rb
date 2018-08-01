@@ -2,18 +2,23 @@ require_relative '../../spec_helper'
 
 RSpec.describe DocusignDtr::Models::Document do
   let(:client) { double }
-  let(:document_attrs) {
+  let(:document_attrs) do
     {
       id: 99,
-      name: "Google.pdf",
-      content_type: "application/pdf",
-      owner_id: 102286,
+      name: 'Google.pdf',
+      content_type: 'application/pdf',
+      owner_id: 102_286,
       is_virtual: false,
-      file_size: "383764",
-      owner: {"user_id"=>102286, "first_name"=>"Manny", "last_name"=>"Manager", "company_name"=>"Loft 47"},
-      creation_details: {"created"=>"2018-07-31T14:25:16"},
+      file_size: '383764',
+      owner: {
+        user_id: 102_286,
+        first_name: 'Manny',
+        last_name: 'Manager',
+        company_name: 'Loft 47'
+      },
+      creation_details: { created: '2018-07-31T14:25:16' },
       folder_id: 0,
-      folder_name: "Transaction Docs",
+      folder_name: 'Transaction Docs',
       is_new: false,
       can_rename: true,
       can_copy: true,
@@ -32,10 +37,12 @@ RSpec.describe DocusignDtr::Models::Document do
       can_edit: true,
       people_with_access: 1,
       is_signed: false,
-      links: [{"name"=>"Download", "url"=>"https://stage.cartavi.com/restapi/v1/documents/114254"},
-        {"name"=>"Details", "url"=>"https://stage.cartavi.com/restapi/v1/documents/114254/details"}]
+      links: [
+        { name: 'Download', url: 'https://stage.cartavi.com/restapi/v1/documents/114254' },
+        { name: 'Details', url: 'https://stage.cartavi.com/restapi/v1/documents/114254/details' }
+      ]
     }
-  }
+  end
   subject do
     document = DocusignDtr::Models::Document.new(
       document_attrs
