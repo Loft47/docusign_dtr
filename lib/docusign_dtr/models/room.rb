@@ -71,6 +71,11 @@ module DocusignDtr
         return [] unless room_id
         ::DocusignDtr::Document.new(client: client).all_by_room_id(room_id)
       end
+
+      def task_lists
+        return [] unless room_id
+        ::DocusignDtr::TaskList.new(client: client).all_by_room_id(room_id)
+      end
     end
   end
 end

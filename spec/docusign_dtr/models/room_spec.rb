@@ -54,5 +54,9 @@ RSpec.describe DocusignDtr::Models::Room do
       expect(client).to receive(:get).and_return(documents)
       expect(subject.documents.first).to be_a DocusignDtr::Models::Document
     end
+
+    it '#task_lists' do
+      skip
+    end
   end
 end

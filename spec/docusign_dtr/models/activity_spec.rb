@@ -5,14 +5,14 @@ RSpec.describe DocusignDtr::Models::Activity do
   let(:activity_attrs) do
     {
       document_activity_id: 99,
-      action: "Added",
-      activity_date: "2018-06-27T21:10:54.843",
-      comment: "",
-      activity_source: "ra",
+      action: 'Added',
+      activity_date: '2018-06-27T21:10:54.843',
+      comment: '',
+      activity_source: 'ra',
       by_user: {
-        "userId": 999_999,
-        "firstName": "Mr. Chat",
-        "lastName": "Robot"
+        'userId': 999_999,
+        'firstName': 'Mr. Chat',
+        'lastName': 'Robot'
       }
     }
   end

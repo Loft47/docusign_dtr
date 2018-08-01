@@ -34,7 +34,7 @@ RSpec.describe DocusignDtr::TaskList do
   describe '#find' do
     it 'returns one task_list object' do
       expect(client).to receive(:get).and_return(task_list)
-      expect(subject.find(73_999)).to be_a DocusignDtr::Models::TaskList
+      expect(subject.find(73_999)).to be_a DocusignDtr::Models::Member
     end
   end
 end
