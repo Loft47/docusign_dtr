@@ -1,0 +1,95 @@
+module DocusignDtr
+  module Models
+    class RoomDetail
+      include Virtus.model
+      attribute :actual_close_date
+      attribute :api_client_data
+      attribute :appraisal_contingency_date
+      attribute :bathrooms
+      attribute :bedrooms
+      attribute :binding_date
+      attribute :buyer1, DocusignDtr::Models::Contact
+      attribute :buyer2, DocusignDtr::Models::Contact
+      attribute :buyer_agent1_email
+      attribute :buyer_agent1_name
+      attribute :buyer_agent1_phone
+      attribute :buyer_agent2_company
+      attribute :buyer_agent2_email
+      attribute :buyer_agent2_name
+      attribute :buyer_agent2_phone
+      attribute :buyer_side_commission
+      attribute :closed_date
+      attribute :closed_status_id
+      attribute :comment
+      attribute :company_address1
+      attribute :company_address2
+      attribute :company_city
+      attribute :company_contact_name
+      attribute :company_email
+      attribute :company_id
+      attribute :company_phone
+      attribute :company_postal_code
+      attribute :company_state
+      attribute :contingency_removal_date
+      attribute :contract_amount
+      attribute :contract_date
+      attribute :current_listing_amount
+      attribute :date_submitted_for_review
+      attribute :earnest_money_amount
+      attribute :entity_holding_earnest_money
+      attribute :escrow_provider
+      attribute :expected_closing_date
+      attribute :financing_type_id
+      attribute :garages
+      attribute :home_warranty_provider
+      attribute :inspection_contingency_date
+      attribute :insurance_provider
+      attribute :internal_referral
+      attribute :internal_referral_percentage
+      attribute :is_under_contract
+      attribute :latitude
+      attribute :listing_agent1_company
+      attribute :listing_agent1_email
+      attribute :listing_agent1_name
+      attribute :listing_agent1_phone
+      attribute :listing_agent2_company
+      attribute :listing_agent2_email
+      attribute :listing_agent2_name
+      attribute :listing_agent2_phone
+      attribute :listing_date
+      attribute :listing_expiration_date
+      attribute :list_side_commission
+      attribute :loan_contingency_date
+      attribute :local_contract_amount
+      attribute :local_currency_id
+      attribute :local_current_listing_amount
+      attribute :local_earnest_money_amount
+      attribute :local_original_listing_amount
+      attribute :longitude
+      attribute :lot_size
+      attribute :mls_id
+      attribute :mortgage_provider
+      attribute :offer_date
+      attribute :office_id
+      attribute :original_listing_amount
+      attribute :origin_of_lead_id
+      attribute :outside_referral
+      attribute :outside_referral_percentage
+      attribute :property_type_id
+      attribute :rejected_date
+      attribute :relisting
+      attribute :room_contacts, Array[DocusignDtr::Models::Contact]
+      attribute :rooms
+      attribute :seller1, DocusignDtr::Models::Contact
+      attribute :seller2, DocusignDtr::Models::Contact
+      attribute :seller_concession
+      attribute :special_circumstances_id
+      attribute :sq_ft
+      attribute :survey_provider
+      attribute :taxes
+      attribute :title_provider
+      attribute :units
+      attribute :year_built
+    end
+  end
+end

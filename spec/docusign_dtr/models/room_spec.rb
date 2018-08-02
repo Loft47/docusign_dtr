@@ -5,18 +5,28 @@ RSpec.describe DocusignDtr::Models::Room do
   let(:address) { DocusignDtr::Models::Address.new }
   subject do
     room = DocusignDtr::Models::Room.new(
-      room_id: 99,
-      room_name: 'Main Office',
-      mls_id: '123456789',
-      address: address,
-      owners: {},
-      office_id: 2,
-      latitude: 0,
-      longitude: 0,
-      closed_status_id: '',
+      address: DocusignDtr::Models::Address.new,
+      auction_details: DocusignDtr::Models::AuctionDetail.new,
+      closed_status_id: 1234,
+      company_room_status_id: 1234,
+      contract_amount: 2_000,
       created_date: '2018-06-26T21:15:28.663',
+      creation_details: DocusignDtr::Models::CreationDetail.new,
+      details: DocusignDtr::Models::RoomDetail.new,
+      integrator_data: {},
       is_under_contract: false,
-      status: 'Active'
+      last_updated_date: '2018-07-06T21:15:28.663',
+      latitude: 49.17,
+      lone_wolf_details: DocusignDtr::Models::LoneWolfDetail.new,
+      longitude: -123.77,
+      mls_id: '123456789',
+      office_id: 2,
+      owners: [DocusignDtr::Models::Owner.new],
+      room_id: 99,
+      room_image_url: 'http://www.google.ca',
+      room_name: 'Main Office',
+      status: 'Active',
+      view_link: 'http://www.google.ca'
     )
     room.client = client
     room
@@ -25,18 +35,28 @@ RSpec.describe DocusignDtr::Models::Room do
   describe '#attributes' do
     it 'has them' do
       expect(subject).to have_attributes(
-        room_id: 99,
-        room_name: 'Main Office',
-        mls_id: '123456789',
-        address: address,
-        owners: {},
-        office_id: 2,
-        latitude: 0,
-        longitude: 0,
-        closed_status_id: '',
+        address: be_a(DocusignDtr::Models::Address),
+        auction_details: be_a(DocusignDtr::Models::AuctionDetail),
+        closed_status_id: 1234,
+        company_room_status_id: 1234,
+        contract_amount: 2_000,
         created_date: '2018-06-26T21:15:28.663',
+        creation_details: be_a(DocusignDtr::Models::CreationDetail),
+        details: be_a(DocusignDtr::Models::RoomDetail),
+        integrator_data: {},
         is_under_contract: false,
-        status: 'Active'
+        last_updated_date: '2018-07-06T21:15:28.663',
+        latitude: 49.17,
+        lone_wolf_details: be_a(DocusignDtr::Models::LoneWolfDetail),
+        longitude: -123.77,
+        mls_id: '123456789',
+        office_id: 2,
+        owners: be_a(Array),
+        room_id: 99,
+        room_image_url: 'http://www.google.ca',
+        room_name: 'Main Office',
+        status: 'Active',
+        view_link: 'http://www.google.ca'
       )
     end
   end
