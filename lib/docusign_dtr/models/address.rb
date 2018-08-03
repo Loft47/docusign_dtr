@@ -10,8 +10,6 @@ module DocusignDtr
       attribute :postal_code
       attribute :country_id
       attribute :time_zone_id
-
-      attr_accessor :client
     end
   end
 end

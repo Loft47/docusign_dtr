@@ -29,8 +29,36 @@ module DocusignDtr
       @office ||= DocusignDtr::Office.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
+    def Document # rubocop:disable  Naming/MethodName
+      @document ||= DocusignDtr::Document.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def Member # rubocop:disable  Naming/MethodName
+      @member ||= DocusignDtr::Member.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def Meta # rubocop:disable  Naming/MethodName
+      @meta ||= DocusignDtr::Meta.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
     def Room # rubocop:disable  Naming/MethodName
       @room ||= DocusignDtr::Room.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def Task # rubocop:disable  Naming/MethodName
+      @task ||= DocusignDtr::Task.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def TaskList # rubocop:disable  Naming/MethodName
+      @task_list ||= DocusignDtr::TaskList.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def Title # rubocop:disable  Naming/MethodName
+      @title ||= DocusignDtr::Title.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def User # rubocop:disable  Naming/MethodName
+      @user ||= DocusignDtr::User.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
     private
