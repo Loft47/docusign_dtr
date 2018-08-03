@@ -4,7 +4,7 @@ RSpec.describe DocusignDtr::TaskList do
   subject { DocusignDtr::TaskList.new(client: client) }
   let(:client) { double }
   let(:room_id) { 99 }
-  let(:task_lists) { { 'task_lists' => [task_list] } }
+  let(:task_lists) { [task_list] }
   let(:task_list) do
     {
       id: 73_999,
@@ -27,7 +27,7 @@ RSpec.describe DocusignDtr::TaskList do
   describe '#all' do
     it 'returns array of task_lists' do
       expect(client).to receive(:get).and_return(task_lists)
-      expect(subject.all_by_room_id(room_id).first).to be_a DocusignDtr::Models::TaskList
+      expect(subject.all_by_room_id(room_id)).to all(be_a(DocusignDtr::Models::TaskList))
     end
   end
 
