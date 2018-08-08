@@ -2,20 +2,19 @@ module DocusignDtr
   module Models
     class TaskList
       include Virtus.model
+      attribute :approval_date
+      attribute :approved_by_user_id
+      attribute :can_remove
       attribute :id
+      attribute :is_general
       attribute :name
       attribute :room_id
-      attribute :rejectedDate
-      attribute :rejectedByUserId
-      attribute :submittedForReviewDate
-      attribute :approvedByUserId
-      attribute :approvalDate
-      attribute :canRemove
-      attribute :isGeneral
-      attribute :reviewStatus
+      attribute :rejected_date
+      attribute :rejected_by_user_id
+      attribute :review_status
       attribute :status
-      attribute :taskListTemplateId
-      attribute :tasks
+      attribute :submitted_for_review_date
+      attribute :task_list_template_id
       attr_accessor :client
     end
   end
