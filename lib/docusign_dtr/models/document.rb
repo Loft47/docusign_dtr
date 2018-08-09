@@ -33,8 +33,14 @@ module DocusignDtr
       attribute :owner
       attribute :owner_id
       attribute :people_with_access
+      attribute :place_holder_id
+      attribute :place_holder_name
       attribute :room_id
       attr_accessor :client
+      alias_method :document_id, :id
+      alias_method :document_id=, :id=
+      alias_method :document_name, :name
+      alias_method :document_name=, :name=
 
       def download
         DocusignDtr::Document.download(id)

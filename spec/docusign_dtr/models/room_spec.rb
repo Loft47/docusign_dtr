@@ -3,6 +3,36 @@ require_relative '../../spec_helper'
 RSpec.describe DocusignDtr::Models::Room do
   let(:client) { double }
   let(:address) { DocusignDtr::Models::Address.new }
+  let(:task_lists) { [task_list] }
+  let(:users_attrs) { { 'users' => [user_attr] } }
+  let(:user_attr) do
+    {
+      user_id: 121_691,
+      company_name: '',
+      first_name: 'Robinson',
+      last_name: 'Cruzoe',
+      email: 'email@gmail.ca',
+      role_id: 'buyer',
+      transaction_side_id: 'listbuy',
+      document_count: 0,
+      is_registered: true,
+      is_owner: false,
+      role_name: 'Buyer',
+      is_virtual_room_member: false
+    }
+  end
+  let(:task_list) do
+    {
+      id: 73_999,
+      name: 'Do something please',
+      roomId: 81_742,
+      canRemove: true,
+      isGeneral: false,
+      reviewStatus: 'CanReview',
+      status: 'Open',
+      taskListTemplateId: 5_855
+    }
+  end
   subject do
     room = DocusignDtr::Models::Room.new(
       address: DocusignDtr::Models::Address.new,
@@ -76,7 +106,13 @@ RSpec.describe DocusignDtr::Models::Room do
     end
 
     it '#task_lists' do
-      skip
+      expect(client).to receive(:get).and_return(task_lists)
+      expect(subject.task_lists.first).to be_a DocusignDtr::Models::TaskList
+    end
+
+    it '#users' do
+      expect(client).to receive(:get).and_return(users_attrs)
+      expect(subject.users.first).to be_a DocusignDtr::Models::User
     end
   end
 end

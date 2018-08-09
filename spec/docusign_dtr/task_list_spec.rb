@@ -14,8 +14,7 @@ RSpec.describe DocusignDtr::TaskList do
       isGeneral: false,
       reviewStatus: 'CanReview',
       status: 'Open',
-      taskListTemplateId: 5_855,
-      tasks: []
+      taskListTemplateId: 5_855
     }
   end
 
@@ -24,7 +23,7 @@ RSpec.describe DocusignDtr::TaskList do
     it { expect { DocusignDtr::TaskList.new }.to raise_error(StandardError) }
   end
 
-  describe '#all' do
+  describe '#all_by_room_id' do
     it 'returns array of task_lists' do
       expect(client).to receive(:get).and_return(task_lists)
       expect(subject.all_by_room_id(room_id)).to all(be_a(DocusignDtr::Models::TaskList))

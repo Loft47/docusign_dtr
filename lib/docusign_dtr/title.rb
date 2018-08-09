@@ -7,7 +7,7 @@ module DocusignDtr
     end
 
     def all
-      @client.get('/titles')['titles'].map do |title_attrs|
+      @client.get('/titles').map do |title_attrs|
         title = DocusignDtr::Models::Title.new(title_attrs)
         title.client = client
         title
