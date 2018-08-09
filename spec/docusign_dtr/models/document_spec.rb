@@ -58,4 +58,11 @@ RSpec.describe DocusignDtr::Models::Document do
       )
     end
   end
+
+  describe '#download' do
+    it 'downloads' do
+      expect(DocusignDtr::Document).to receive(:download).with(99).and_return(:document)
+      expect(subject.download).to eq :document
+    end
+  end
 end
