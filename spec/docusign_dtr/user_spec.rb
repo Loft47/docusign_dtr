@@ -48,4 +48,11 @@ RSpec.describe DocusignDtr::User do
       expect(subject.profile(99)).to be_a DocusignDtr::Models::Profile
     end
   end
+
+  describe '#all_by_room_id' do
+    it 'returns array of users' do
+      expect(client).to receive(:get).and_return(users)
+      expect(subject.all_by_room_id(99)).to all(be_a(DocusignDtr::Models::User))
+    end
+  end
 end

@@ -19,5 +19,13 @@ module DocusignDtr
       profile.client = client
       profile
     end
+
+    def all_by_room_id(room_id)
+      @client.get("/rooms/#{room_id}/users")['users'].map do |user_attrs|
+        user = DocusignDtr::Models::User.new(user_attrs)
+        user.client = client
+        user
+      end
+    end
   end
 end

@@ -16,7 +16,7 @@ RSpec.describe DocusignDtr::Profile do
     it { expect { DocusignDtr::Profile.new }.to raise_error(StandardError) }
   end
 
-  describe '#profile' do
+  describe '#find' do
     it 'returns the user profile attributes' do
       expect(client).to receive(:get).and_return(profile_attrs)
       expect(subject.find(99)).to be_a DocusignDtr::Models::Profile
