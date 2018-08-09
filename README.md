@@ -23,7 +23,7 @@ Or install it yourself as:
 auth = DocusignDtr::Auth::Jwt.new(
   integrator_key: '1e1e1e1e-1e1e-1e1e-1e1e-1e1e1e1e1e1e',
   private_key: "-----BEGIN RSA PRIVATE KEY-----\nTRUST_NO_ONE\n-----END RSA PRIVATE KEY-----",
-  user_guid: user_guid = '1f1f1f1f-1f1f-1f1f-1f1f-1f1f1f1f1f1f',
+  user_guid: '1f1f1f1f-1f1f-1f1f-1f1f-1f1f1f1f1f1f',
   redirect_uri: 'https://www.google.com'
 )
 begin
@@ -35,17 +35,19 @@ end
 
 puts "Your access token is #{auth.access_token}"
 ```
+Now you can use the ```access_token``` in the docusign [api explorer](https://stage.cartavi.com/restapi/swashbuckle/ui/index).
 
-When you receive a DocusignDtr::ConsentRequired error Send your client to the grant_uril above and they will be required to authenticat your app. Once they authorize your app they will be redirected to the redirect_url  (for now its google.com)
+When you receive a DocusignDtr::ConsentRequired error Send your client to the grant_url above and they will be required to authenticate your app. Once they authorize your app they will be redirected to the redirect_url  (for now its google.com)
 When you receive an auth object you can use the access_token to connect to resources:
 
 ```ruby
 auth_token = 'SOME_LONG_SECRET_TRUST_NO_ONE_WITH_THIS'
 client = DocusignDtr::Client.new(token: auth_token, test_mode: false, application: 'myapplication.com')
-all_rooms = client.Room.all
-room =client.Room.find(all_rooms.last.id)
-document = room.documents.last
-file = document.download
+all_rooms = client.Room.all  # => [#<DocusignDtr::Models::Room ... >,]
+room = client.Room.find(all_rooms.last.id) # =>  #<DocusignDtr::Models::Room ... >
+room.name #=> My Room
+document = room.documents.last # =>  #<DocusignDtr::Models::Docuement ... >
+file = document.download # => #<File:/tmp/....>
 
 # Other endpoints
 offices = client.Office.all
@@ -55,8 +57,6 @@ task_list = client.TaskList.find(98765)
 titles = client.Title.all
 profile = client.User.profile(54321)
 ```
-
-Now you can use the ```access_token``` in the docusign [api explorer](https://stage.cartavi.com/restapi/swashbuckle/ui/index).
 
 ## Development
 
