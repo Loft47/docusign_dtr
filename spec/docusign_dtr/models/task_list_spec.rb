@@ -1,7 +1,6 @@
 require_relative '../../spec_helper'
 
 RSpec.describe DocusignDtr::Models::TaskList do
-  let(:client) { double }
   subject do
     DocusignDtr::Models::TaskList.new(
       tasks: [DocusignDtr::Models::Task.new]
@@ -9,9 +8,9 @@ RSpec.describe DocusignDtr::Models::TaskList do
   end
   let(:attr) do
     %i[
-        approval_date approved_by_user_id can_remove id is_general name
-        room_id rejected_date rejected_by_user_id review_status status 
-        submitted_for_review_date tasks task_list_template_id
+      approval_date approved_by_user_id can_remove id is_general name
+      room_id rejected_date rejected_by_user_id review_status status
+      submitted_for_review_date tasks task_list_template_id
     ]
   end
 

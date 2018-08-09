@@ -30,7 +30,7 @@ RSpec.describe DocusignDtr::Models::Task do
   end
   let(:attr) do
     %i[
-      assignments calculated_due_date can_agent_delete can_agent_edit 
+      assignments calculated_due_date can_agent_delete can_agent_edit
       can_approve can_assign_documents can_delete can_edit can_mark_complete
       can_mark_incomplete can_reject can_remove_approval can_review
       can_send_reminder can_view completed_by_user_id completed_date
