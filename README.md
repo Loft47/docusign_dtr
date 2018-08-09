@@ -20,27 +20,43 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-integrator_key = 'TRUST_NO_ONE'
-secret_key = 'TRUST_NO_ONE'
-redirect_url = 'https://www.google.ca'
-ds = DocusignDtr::Auth.new(integrator_key: integrator_key, secret_key: secret_key, redirect_uri: redirect_url)
-ds.auth_uri.to_s
-# "https://account-d.docusign.com/oauth/auth?response_type=code&scope=signature&client_id=TRUST_NO_ONEstate=TRUST_NO_ONE&redirect_uri=https%3A%2F%2Fwww.google.ca"
+auth = DocusignDtr::Auth::Jwt.new(
+  integrator_key: '1e1e1e1e-1e1e-1e1e-1e1e-1e1e1e1e1e1e',
+  private_key: "-----BEGIN RSA PRIVATE KEY-----\nTRUST_NO_ONE\n-----END RSA PRIVATE KEY-----",
+  user_guid: user_guid = '1f1f1f1f-1f1f-1f1f-1f1f-1f1f1f1f1f1f',
+  redirect_uri: 'https://www.google.com'
+)
+begin
+auth.request_token
+rescue DocusignDtr::ConsentRequired
+  # launch or redirect user to grant url and try again
+  Launchy.open(auth.grant_url)
+end
+
+puts "Your access token is #{auth.access_token}"
 ```
 
-Send your client to the auth_uri above and they will be redirected to the redirect_url  (for now its google.ca)
+When you receive a DocusignDtr::ConsentRequired error Send your client to the grant_uril above and they will be required to authenticat your app. Once they authorize your app they will be redirected to the redirect_url  (for now its google.com)
+When you receive an auth object you can use the access_token to connect to resources:
 
 ```ruby
-url='https://www.google.ca/?code=TRUST_NO_ONE&state=TRUST_NO_ONE'
-parsed_url = ds.parse_url_response(url)
-access_token = ds.get_token(response_code: parsed_url.code, state: parsed_url.state).access_token
-api = DocusignDtr::Client.new(access_token: access_token)
-offices = api.Office.all
+auth_token = 'SOME_LONG_SECRET_TRUST_NO_ONE_WITH_THIS'
+client = DocusignDtr::Client.new(token: auth_token, test_mode: false, application: 'myapplication.com')
+all_rooms = client.Room.all
+room =client.Room.find(all_rooms.last.id)
+document = room.documents.last
+file = document.download
+
+# Other endpoints
+offices = client.Office.all
+document = client.Document.find(12345)
+member = client.Member.find(56789)
+task_list = client.TaskList.find(98765)
+titles = client.Title.all
+profile = client.User.profile(54321)
 ```
 
 Now you can use the ```access_token``` in the docusign [api explorer](https://stage.cartavi.com/restapi/swashbuckle/ui/index).
-
-:TODO:
 
 ## Development
 
