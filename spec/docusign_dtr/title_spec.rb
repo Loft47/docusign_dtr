@@ -3,16 +3,12 @@ require_relative '../spec_helper'
 RSpec.describe DocusignDtr::Title do
   subject { DocusignDtr::Title.new(client: client) }
   let(:client) { double }
-  let(:titles) { { 'titles' => [title] } }
+  let(:titles) { [title] }
   let(:title) do
     {
-      room_id: 99,
-      room_name: 'Test Room',
-      mls_id: '12345',
-      address: nil,
-      office_id: '1234',
-      latitude: '-123',
-      longitude: '49'
+      id: 99,
+      title: 'Administrator',
+      member_count: 0
     }
   end
 
