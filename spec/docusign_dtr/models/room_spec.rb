@@ -6,15 +6,15 @@ RSpec.describe DocusignDtr::Models::Room do
   let(:task_lists) { [task_list] }
   let(:task_list) do
     {
-      id: 73999,
+      id: 73_999,
       name: 'Do something please',
-      roomId: 81742,
+      roomId: 81_742,
       canRemove: true,
       isGeneral: false,
       reviewStatus: 'CanReview',
       status: 'Open',
-      taskListTemplateId: 5855
-    }  
+      taskListTemplateId: 5_855
+    }
   end
   subject do
     room = DocusignDtr::Models::Room.new(

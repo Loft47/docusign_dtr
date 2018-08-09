@@ -9,11 +9,7 @@ RSpec.describe DocusignDtr::Models::Activity do
       activity_date: '2018-06-27T21:10:54.843',
       comment: '',
       activity_source: 'ra',
-      by_user: {
-        'userId': 999_999,
-        'firstName': 'Mr. Chat',
-        'lastName': 'Robot'
-      }
+      by_user: DocusignDtr::Models::User.new
     }
   end
   subject do

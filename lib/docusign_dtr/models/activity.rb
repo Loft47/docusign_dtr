@@ -7,7 +7,7 @@ module DocusignDtr
       attribute :activity_date
       attribute :comment
       attribute :activity_source
-      attribute :by_user
+      attribute :by_user, DocusignDtr::Models::User
       attr_accessor :client
     end
   end

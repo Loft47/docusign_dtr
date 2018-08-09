@@ -37,7 +37,6 @@ require 'docusign_dtr/task_list'
 require 'docusign_dtr/title'
 require 'docusign_dtr/user'
 
-require 'docusign_dtr/models/activity'
 require 'docusign_dtr/models/address'
 require 'docusign_dtr/models/auction_detail'
 require 'docusign_dtr/models/auth_config'
@@ -73,6 +72,7 @@ require 'docusign_dtr/models/task'
 require 'docusign_dtr/models/task_list'
 require 'docusign_dtr/models/title'
 require 'docusign_dtr/models/user'
+require 'docusign_dtr/models/activity'
 require 'docusign_dtr/models/room'
 
 module DocusignDtr
