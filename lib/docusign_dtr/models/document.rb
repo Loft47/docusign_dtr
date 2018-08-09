@@ -35,6 +35,10 @@ module DocusignDtr
       attribute :people_with_access
       attribute :room_id
       attr_accessor :client
+
+      def download
+        DocusignDtr::Document.download(id)
+      end
     end
   end
 end
