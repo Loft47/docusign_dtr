@@ -57,4 +57,9 @@ RSpec.describe DocusignDtr::Client do
         status: code, body: '{ "response": "test" }', headers: { 'Content-Type': 'application/json' }
       )
   end
+
+  describe '#base_uri' do
+    it { expect(DocusignDtr::Client.new(token: :t, test_mode: false).base_uri).to eq 'https://cartavi.com/restapi/v1' }
+    it { expect(DocusignDtr::Client.new(token: :t).base_uri).to eq 'https://stage.cartavi.com/restapi/v1' }
+  end
 end

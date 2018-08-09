@@ -1,10 +1,10 @@
 module DocusignDtr
   class Client
     include HTTParty
-    base_uri 'https://stage.cartavi.com/restapi/v1'
     attr_accessor :token
 
-    def initialize(token:, application: 'docusign_dtr')
+    def initialize(token:, test_mode: true, application: 'docusign_dtr')
+      @test_mode = test_mode
       @token = token
       @application = application
       raise 'Missing Token' unless token
@@ -16,7 +16,8 @@ module DocusignDtr
     end
 
     def raw(page, params = {})
-      response = self.class.get(page, query: params, headers: headers, timeout: 60)
+      full_path = [base_uri, page].join
+      response = self.class.get(full_path, query: params, headers: headers, timeout: 60)
       handle_error(response.code) if response.code != 200
       response.parsed_response
     end
@@ -59,6 +60,10 @@ module DocusignDtr
 
     def User # rubocop:disable  Naming/MethodName
       @user ||= DocusignDtr::User.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def base_uri
+      @base_uri ||= @test_mode ? 'https://stage.cartavi.com/restapi/v1' : 'https://cartavi.com/restapi/v1'
     end
 
     private
