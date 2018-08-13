@@ -132,6 +132,10 @@ module DocusignDtr
       @room ||= DocusignDtr::Room.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
+    def Region # rubocop:disable  Naming/MethodName
+      @region ||= DocusignDtr::Region.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
     def TaskList # rubocop:disable  Naming/MethodName
       @task_list ||= DocusignDtr::TaskList.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end

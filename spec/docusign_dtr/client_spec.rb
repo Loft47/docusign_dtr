@@ -57,6 +57,7 @@ RSpec.describe DocusignDtr::Client do
     it { expect(subject.MetaTimezone).to be_a DocusignDtr::MetaTimezone }
     it { expect(subject.MetaTransactionSide).to be_a DocusignDtr::MetaTransactionSide }
     it { expect(subject.Office).to be_a DocusignDtr::Office }
+    it { expect(subject.Region).to be_a DocusignDtr::Region }
     it { expect(subject.Room).to be_a DocusignDtr::Room }
     it { expect(subject.TaskList).to be_a DocusignDtr::TaskList }
     it { expect(subject.Activity).to be_a DocusignDtr::Activity }
