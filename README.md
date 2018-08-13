@@ -1,6 +1,7 @@
 # DocusignDtr
 This library is designed to help ruby applications consume the Docusign DTR API.
 [![Build Status](https://travis-ci.org/Loft47/docusign_dtr.svg?branch=master)](https://travis-ci.org/Loft47/docusign_dtr)
+[![Coverage Status](https://coveralls.io/repos/github/Loft47/docusign_dtr/badge.svg?branch=master)](https://coveralls.io/github/Loft47/docusign_dtr?branch=master)
 
 ## Installation
 
