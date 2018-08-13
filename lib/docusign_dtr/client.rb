@@ -34,10 +34,6 @@ module DocusignDtr
       @member ||= DocusignDtr::Member.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
-    def Meta # rubocop:disable  Naming/MethodName
-      @meta ||= DocusignDtr::Meta.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
-    end
-
     def Office # rubocop:disable  Naming/MethodName
       @office ||= DocusignDtr::Office.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end

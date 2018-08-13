@@ -40,7 +40,6 @@ RSpec.describe DocusignDtr::Client do
   describe 'Models' do
     it { expect(subject.Document).to be_a DocusignDtr::Document }
     it { expect(subject.Member).to be_a DocusignDtr::Member }
-    it { expect(subject.Meta).to be_a DocusignDtr::Meta }
     it { expect(subject.Office).to be_a DocusignDtr::Office }
     it { expect(subject.Room).to be_a DocusignDtr::Room }
     it { expect(subject.TaskList).to be_a DocusignDtr::TaskList }
