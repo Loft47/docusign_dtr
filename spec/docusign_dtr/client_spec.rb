@@ -40,6 +40,22 @@ RSpec.describe DocusignDtr::Client do
   describe 'Models' do
     it { expect(subject.Document).to be_a DocusignDtr::Document }
     it { expect(subject.Member).to be_a DocusignDtr::Member }
+    it { expect(subject.MetaActivityType).to be_a DocusignDtr::MetaActivityType }
+    it { expect(subject.MetaClosingStatus).to be_a DocusignDtr::MetaClosingStatus }
+    it { expect(subject.MetaContactSide).to be_a DocusignDtr::MetaContactSide }
+    it { expect(subject.MetaCountry).to be_a DocusignDtr::MetaCountry }
+    it { expect(subject.MetaCurrency).to be_a DocusignDtr::MetaCurrency }
+    it { expect(subject.MetaFinancingType).to be_a DocusignDtr::MetaFinancingType }
+    it { expect(subject.MetaOriginOfLeadType).to be_a DocusignDtr::MetaOriginOfLeadType }
+    it { expect(subject.MetaPropertyType).to be_a DocusignDtr::MetaPropertyType }
+    it { expect(subject.MetaRole).to be_a DocusignDtr::MetaRole }
+    it { expect(subject.MetaRoomContactType).to be_a DocusignDtr::MetaRoomContactType }
+    it { expect(subject.MetaSellerDecisionType).to be_a DocusignDtr::MetaSellerDecisionType }
+    it { expect(subject.MetaSpecialCircumstanceType).to be_a DocusignDtr::MetaSpecialCircumstanceType }
+    it { expect(subject.MetaState).to be_a DocusignDtr::MetaState }
+    it { expect(subject.MetaTaskDateType).to be_a DocusignDtr::MetaTaskDateType }
+    it { expect(subject.MetaTimezone).to be_a DocusignDtr::MetaTimezone }
+    it { expect(subject.MetaTransactionSide).to be_a DocusignDtr::MetaTransactionSide }
     it { expect(subject.Office).to be_a DocusignDtr::Office }
     it { expect(subject.Room).to be_a DocusignDtr::Room }
     it { expect(subject.TaskList).to be_a DocusignDtr::TaskList }

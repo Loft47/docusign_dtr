@@ -1,5 +1,5 @@
 module DocusignDtr
-  class Client
+  class Client # rubocop:disable Metrics/ClassLength
     include HTTParty
     attr_accessor :token
 
@@ -32,6 +32,96 @@ module DocusignDtr
 
     def Member # rubocop:disable  Naming/MethodName
       @member ||= DocusignDtr::Member.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def MetaActivityType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_activity_type ||= DocusignDtr::MetaActivityType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaClosingStatus # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_closing_status ||= DocusignDtr::MetaClosingStatus.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaContactSide # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_contact_side ||= DocusignDtr::MetaContactSide.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaCountry # rubocop:disable  Naming/MethodName
+      @meta_country ||= DocusignDtr::MetaCountry.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def MetaCurrency # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_currency ||= DocusignDtr::MetaCurrency.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaFinancingType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_financing_type ||= DocusignDtr::MetaFinancingType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaOriginOfLeadType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_origin_of_lead_type ||= DocusignDtr::MetaOriginOfLeadType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaPropertyType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_property_type ||= DocusignDtr::MetaPropertyType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaRole # rubocop:disable  Naming/MethodName
+      @meta_role ||= DocusignDtr::MetaRole.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def MetaRoomContactType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_room_contact_type ||= DocusignDtr::MetaRoomContactType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaSellerDecisionType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_seller_decision_type ||= DocusignDtr::MetaSellerDecisionType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaSpecialCircumstanceType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_special_circumstance_type ||= DocusignDtr::MetaSpecialCircumstanceType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaState # rubocop:disable  Naming/MethodName
+      @meta_state ||= DocusignDtr::MetaState.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def MetaTaskDateType # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_task_date_type ||= DocusignDtr::MetaTaskDateType.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaTimezone # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_timezone ||= DocusignDtr::MetaTimezone.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
+    end
+
+    def MetaTransactionSide # rubocop:disable  Naming/MethodName
+      # rubocop:disable LineLength
+      @meta_transaction_side ||= DocusignDtr::MetaTransactionSide.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop:enable LineLength
     end
 
     def Office # rubocop:disable  Naming/MethodName
