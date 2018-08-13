@@ -26,10 +26,6 @@ module DocusignDtr
       raise error_type(response_code), "Error communicating: Response code #{response_code}"
     end
 
-    def Office # rubocop:disable  Naming/MethodName
-      @office ||= DocusignDtr::Office.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
-    end
-
     def Document # rubocop:disable  Naming/MethodName
       @document ||= DocusignDtr::Document.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
@@ -42,16 +38,20 @@ module DocusignDtr
       @meta ||= DocusignDtr::Meta.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
+    def Office # rubocop:disable  Naming/MethodName
+      @office ||= DocusignDtr::Office.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
     def Room # rubocop:disable  Naming/MethodName
       @room ||= DocusignDtr::Room.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
-    def Task # rubocop:disable  Naming/MethodName
-      @task ||= DocusignDtr::Task.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
-    end
-
     def TaskList # rubocop:disable  Naming/MethodName
       @task_list ||= DocusignDtr::TaskList.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def Activity # rubocop:disable  Naming/MethodName
+      @activity ||= DocusignDtr::Activity.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
     def Title # rubocop:disable  Naming/MethodName
@@ -60,6 +60,10 @@ module DocusignDtr
 
     def User # rubocop:disable  Naming/MethodName
       @user ||= DocusignDtr::User.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
+
+    def Profile # rubocop:disable  Naming/MethodName
+      @profile ||= DocusignDtr::Profile.new(client: self) # rubocop:disable Naming/MemoizedInstanceVariableName
     end
 
     def base_uri
