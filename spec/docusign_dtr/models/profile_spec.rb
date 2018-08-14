@@ -2,11 +2,6 @@ require_relative '../../spec_helper'
 
 RSpec.describe DocusignDtr::Models::Profile do
   let(:client) { double }
-  let(:profile_attrs) do
-    {
-      user_id: 73_999
-    }
-  end
   let(:attrs) do
     %i[
       access_level company_id company_manager_title_id company_name
