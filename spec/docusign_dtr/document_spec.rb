@@ -4,6 +4,7 @@ RSpec.describe DocusignDtr::Document do
   subject { DocusignDtr::Document.new(client: client) }
   let(:client) { double }
   let(:documents) { { 'documents' => [document] } }
+  let(:document_file) { 'content_file' }
   let(:document) do
     {
       id: 99
@@ -38,7 +39,10 @@ RSpec.describe DocusignDtr::Document do
   end
 
   describe '#download' do
-    skip
+    it 'downloads string content' do
+      expect(client).to receive(:get).and_return(document_file)
+      expect(subject.download(document['id'])).to be_a String
+    end
   end
 
   describe '#update' do

@@ -43,7 +43,7 @@ module DocusignDtr
       alias_method :document_name=, :name=
 
       def download
-        DocusignDtr::Document.download(id)
+        DocusignDtr::Document.new(client: client).download(id)
       end
     end
   end

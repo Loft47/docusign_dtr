@@ -11,6 +11,7 @@ RSpec.describe DocusignDtr::Client do
   describe '#get' do
     let(:array) { ['testResponse' => '99'] }
     let(:hash) { { 'testResponse' => '99' } }
+    let(:string) { 'testResponse' }
     it 'parses hash' do
       expect(subject).to receive(:raw).with('/test', foo: 123).and_return(hash)
       expect(subject.get('/test', foo: 123)).to eq('test_response' => '99')
@@ -18,6 +19,10 @@ RSpec.describe DocusignDtr::Client do
     it 'parses array' do
       expect(subject).to receive(:raw).with('/test', foo: 123).and_return(array)
       expect(subject.get('/test', foo: 123)).to eq(['test_response' => '99'])
+    end
+    it 'parses string' do
+      expect(subject).to receive(:raw).with('/test', foo: 123).and_return(string)
+      expect(subject.get('/test', foo: 123)).to eq('testResponse')
     end
   end
 

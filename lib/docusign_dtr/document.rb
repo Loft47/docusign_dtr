@@ -24,7 +24,7 @@ module DocusignDtr
     def create(document_attrs = {}) end
 
     def download(id)
-      # document_attrs = @client.get("/documents/#{id}")
+      @client.get("/documents/#{id}")
     end
 
     def destroy(id) end
