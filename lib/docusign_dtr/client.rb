@@ -170,11 +170,13 @@ module DocusignDtr
       }
     end
 
-    def snakify(hash)
-      if hash.is_a? Array
-        hash.map(&:to_snake_keys)
+    def snakify(object)
+      if object.is_a? Array
+        object.map(&:to_snake_keys)
+      elsif object.is_a? String
+        object
       else
-        hash.to_snake_keys
+        object.to_snake_keys
       end
     end
 

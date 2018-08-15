@@ -2,6 +2,7 @@ require_relative '../../spec_helper'
 
 RSpec.describe DocusignDtr::Models::Document do
   let(:client) { double }
+  let(:document_file) { 'filecontent' }
   let(:document_attrs) do
     {
       id: 99,
@@ -61,8 +62,8 @@ RSpec.describe DocusignDtr::Models::Document do
 
   describe '#download' do
     it 'downloads' do
-      expect(DocusignDtr::Document).to receive(:download).with(99).and_return(:document)
-      expect(subject.download).to eq :document
+      expect(client).to receive(:get).and_return(document_file)
+      expect(subject.download).to eq document_file
     end
   end
 end
