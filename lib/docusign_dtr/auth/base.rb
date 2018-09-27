@@ -78,6 +78,8 @@ module DocusignDtr
           DocusignDtr::Unauthorized
         when 403
           DocusignDtr::Forbidden
+        when 204
+          DocusignDtr::NoContent
         else
           StandardError
         end
