@@ -24,7 +24,7 @@ module DocusignDtr
       def call(options)
         @options = options
         QUERY_PARAMS.each_with_object({}) do |(key, value), memo|
-          memo[key] = send(value)
+          memo[key] = send(value) if @options.key? value
         end
       end
 
@@ -124,8 +124,10 @@ module DocusignDtr
 
       # rubocop:disable Style/DateTime
       def to_date(value)
-        raise "error: #{value} is not a valid date format" unless DateTime.parse(value)
+        DateTime.parse(value)
         value
+      rescue ArgumentError
+        "error: #{value} is not a valid date format"
       end
       # rubocop:enable Style/DateTime
     end

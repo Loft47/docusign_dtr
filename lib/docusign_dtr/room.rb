@@ -12,7 +12,7 @@ module DocusignDtr
     def all(options = {})
       options[:count] ||= MAX_ROOMS
       rooms = []
-      (1..MAX_BATCHES).each do |i|
+      (1..MAX_BATCHES).each do
         current_batch = batch(options)
         rooms += current_batch
         break if current_batch.size < options[:count]
@@ -21,7 +21,7 @@ module DocusignDtr
     end
 
     def batch(options = {})
-      @client.get('/rooms', query_params(options)).map do |room_attrs|
+      @client.get('/rooms', query_params(options))['rooms'].map do |room_attrs|
         room = DocusignDtr::Models::Room.new(room_attrs)
         room.client = client
         room
