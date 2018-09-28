@@ -47,6 +47,7 @@ module DocusignDtr
           Closed
           Open
         ].include? @options[:room_status].to_s
+
         @options[:room_status].to_s
       end
 
@@ -61,6 +62,7 @@ module DocusignDtr
           listbuy
           refi
         ].include? @options[:transaction_side].to_s
+
         @options[:transaction_side].to_s
       end
 
@@ -97,6 +99,7 @@ module DocusignDtr
           'ClosedDate',
           'ClosedDate desc'
         ].include? @options[:sort].to_s
+
         @options[:sort].to_s
       end
 
@@ -106,6 +109,7 @@ module DocusignDtr
           LastUpdated
           Closed
         ].include? @options[:date_range_type]
+
         @options[:date_range_type].to_s
       end
 
@@ -119,17 +123,16 @@ module DocusignDtr
 
       def to_boolean(value)
         raise "error: #{value} is not a boolean value" unless value.is_a? Boolean
+
         value
       end
 
-      # rubocop:disable Style/DateTime
       def to_date(value)
         DateTime.parse(value)
         value
       rescue ArgumentError
         "error: #{value} is not a valid date format"
       end
-      # rubocop:enable Style/DateTime
     end
   end
   # rubocop:enable Naming/PredicateName

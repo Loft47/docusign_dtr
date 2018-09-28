@@ -73,6 +73,7 @@ module DocusignDtr
         when 400
           # {"error":"invalid_grant"}
           return DocusignDtr::InvalidGrant if response.parsed_response['error'].match?(/grant/)
+
           DocusignDtr::ConsentRequired # {"error":"consent_required"}
         when 401
           DocusignDtr::Unauthorized

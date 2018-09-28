@@ -19,6 +19,7 @@ module DocusignDtr
 
       def request_token(code:, state: nil)
         raise 'State does ont match. Possible CSRF!' if state && state != @config.state
+
         params = { grant_type: :authorization_code, code: code }
         response = self.class.post(auth_uri, query: params, headers: headers, timeout: 60)
         handle_error(response.code) if response.code != 200
@@ -27,6 +28,7 @@ module DocusignDtr
 
       def refresh_token
         raise 'No token to refresh' unless @token_response&.access_token
+
         params = { grant_type: :refresh_token, refresh_token: @token_response.access_token }
         response = self.class.post("#{base_uri}oauth/token", query: params, headers: headers, timeout: 60)
         handle_error(response.code) if response.code != 200
