@@ -24,7 +24,7 @@ module DocusignDtr
       def call(options)
         @options = options
         QUERY_PARAMS.each_with_object({}) do |(key, value), memo|
-          memo[key] = send(value) if @options.key? value
+          memo[key] = send(value) if @options.key? key
         end
       end
 
@@ -37,7 +37,8 @@ module DocusignDtr
       end
 
       def start_position
-        @options[:start_position].to_i
+        # binding.pry
+        @options[:startPosition].to_i
       end
 
       def room_status
@@ -46,13 +47,13 @@ module DocusignDtr
           Pending
           Closed
           Open
-        ].include? @options[:room_status].to_s
+        ].include? @options[:roomStatus].to_s
 
-        @options[:room_status].to_s
+        @options[:roomStatus].to_s
       end
 
       def owned_only
-        to_boolean(@options[:owned_only])
+        to_boolean(@options[:ownedOnly])
       end
 
       def transaction_side
@@ -61,29 +62,29 @@ module DocusignDtr
           sell
           listbuy
           refi
-        ].include? @options[:transaction_side].to_s
+        ].include? @options[:transactionSide].to_s
 
-        @options[:transaction_side].to_s
+        @options[:transactionSide].to_s
       end
 
       def is_under_contract
-        to_boolean(@options[:is_under_contract])
+        to_boolean(@options[:isUnderContract])
       end
 
       def region_id
-        @options[:region_id].to_i
+        @options[:regionId].to_i
       end
 
       def office_id
-        @options[:office_id].to_i
+        @options[:officeId].to_i
       end
 
       def has_submitted_task_list
-        to_boolean(@options[:has_submitted_task_list])
+        to_boolean(@options[:hasSubmittedTaskList])
       end
 
       def has_contract_amount
-        to_boolean(@options[:has_contract_amount])
+        to_boolean(@options[:hasContractAmount])
       end
 
       def sort
@@ -108,21 +109,21 @@ module DocusignDtr
           Created
           LastUpdated
           Closed
-        ].include? @options[:date_range_type]
+        ].include? @options[:dateRangeType]
 
-        @options[:date_range_type].to_s
+        @options[:dateRangeType].to_s
       end
 
       def start_date
-        to_date(@options[:start_date].to_s)
+        to_date(@options[:startDate].to_s)
       end
 
       def end_date
-        to_date(@options[:end_date].to_s)
+        to_date(@options[:endDate].to_s)
       end
 
       def to_boolean(value)
-        raise "error: #{value} is not a boolean value" unless value.is_a? Boolean
+        raise "error: #{value} is not a boolean value" unless !value.is_a?(FalseClass) || !value.is_a?(TrueClass)
 
         value
       end

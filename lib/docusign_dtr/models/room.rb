@@ -4,6 +4,8 @@ module DocusignDtr
       include Virtus.model
       attribute :address, DocusignDtr::Models::Address
       attribute :auction_details, DocusignDtr::Models::AuctionDetail
+      attribute :buyer1, DocusignDtr::Models::Contact
+      attribute :buyer2, DocusignDtr::Models::Contact
       attribute :closed_status_id
       attribute :company_room_status_id
       attribute :contract_amount
@@ -22,6 +24,7 @@ module DocusignDtr
       attribute :room_id
       attribute :room_image_url
       attribute :room_name
+      attribute :rooms
       attribute :status
       attribute :view_link
       attr_accessor :client
