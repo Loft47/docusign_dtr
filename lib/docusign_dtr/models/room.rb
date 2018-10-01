@@ -29,6 +29,38 @@ module DocusignDtr
       attribute :view_link
       attr_accessor :client
 
+      ACCEPTABLE_VALUES = {
+        roomStatus: %w[
+          Active
+          Pending
+          Closed
+          Open
+        ],
+        transactionSide: %w[
+          buy
+          sell
+          listbuy
+          refi
+        ],
+        sort: [
+          'RoomName',
+          'RoomName desc',
+          'CreatedDate',
+          'CreatedDate desc',
+          'ExpectedClosingDate',
+          'ExpectedClosingDate desc',
+          'LastUpdatedDate',
+          'LastUpdatedDate desc',
+          'ClosedDate',
+          'ClosedDate desc'
+        ],
+        dateRangeType: %w[
+          Created
+          LastUpdated
+          Closed
+        ]
+      }.freeze
+
       def documents
         return [] unless room_id
 

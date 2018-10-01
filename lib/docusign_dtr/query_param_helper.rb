@@ -1,5 +1,4 @@
 module DocusignDtr
-  # rubocop:disable Metrics/ClassLength
   class QueryParamHelper
     # rubocop:disable Naming/PredicateName
     QUERY_PARAMS = {
@@ -37,17 +36,13 @@ module DocusignDtr
       end
 
       def start_position
-        # binding.pry
         @options[:startPosition].to_i
       end
 
       def room_status
-        raise "error: not acceptable value #{@options[:room_status]}" unless %w[
-          Active
-          Pending
-          Closed
-          Open
-        ].include? @options[:roomStatus].to_s
+        raise "error: not acceptable value #{@options[:roomStatus]}" unless acceptable_value?(
+          :roomStatus, @options[:roomStatus]
+        )
 
         @options[:roomStatus].to_s
       end
@@ -57,12 +52,9 @@ module DocusignDtr
       end
 
       def transaction_side
-        raise "error: not acceptable value #{value}" unless %w[
-          buy
-          sell
-          listbuy
-          refi
-        ].include? @options[:transactionSide].to_s
+        raise "error: not acceptable value #{@options[:transactionSide]}" unless acceptable_value?(
+          :transactionSide, @options[:transactionSide]
+        )
 
         @options[:transactionSide].to_s
       end
@@ -88,28 +80,15 @@ module DocusignDtr
       end
 
       def sort
-        raise "error: not acceptable value #{@options[:sort]}" unless [
-          'RoomName',
-          'RoomName desc',
-          'CreatedDate',
-          'CreatedDate desc',
-          'ExpectedClosingDate',
-          'ExpectedClosingDate desc',
-          'LastUpdatedDate',
-          'LastUpdatedDate desc',
-          'ClosedDate',
-          'ClosedDate desc'
-        ].include? @options[:sort].to_s
+        raise "error: not acceptable value #{@options[:sort]}" unless acceptable_value?(:sort, @options[:sort].to_s)
 
         @options[:sort].to_s
       end
 
       def date_range_type
-        raise "error: not acceptable value #{value}" unless %w[
-          Created
-          LastUpdated
-          Closed
-        ].include? @options[:dateRangeType]
+        raise "error: not acceptable value #{@options[:dateRangeType]}" unless acceptable_value?(
+          :dateRangeType, @options[:dateRangeType]
+        )
 
         @options[:dateRangeType].to_s
       end
@@ -134,8 +113,15 @@ module DocusignDtr
       rescue ArgumentError
         "error: #{value} is not a valid date format"
       end
+
+      def acceptable_value?(key, value)
+        query_acceptable_values[key].include?(value)
+      end
+
+      def query_acceptable_values
+        DocusignDtr::Models::Room::ACCEPTABLE_VALUES
+      end
     end
   end
   # rubocop:enable Naming/PredicateName
 end
-# rubocop:enable Metrics/ClassLength
