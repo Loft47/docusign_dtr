@@ -49,6 +49,7 @@ module DocusignDtr
 
       def activities
         return [] unless task_id
+
         ::DocusignDtr::Activity.new(client: client).all_by_task_id(task_id)
       end
     end

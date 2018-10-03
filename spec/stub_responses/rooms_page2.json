@@ -1,0 +1,173 @@
+{
+  "rooms": [
+    {
+      "roomId": 88644,
+      "roomName": "Koelpin",
+      "mlsId": "6471627696",
+      "address": {
+        "address1": "2200 Z 4th Ave",
+        "city": "T",
+        "stateId": "CA-NU",
+        "countryId": "CA"
+      },
+      "owners": [
+        {
+          "userId": 102286,
+          "firstName": "Manny",
+          "lastName": "Manager",
+          "transactionSideId": "listbuy",
+          "officeId": 1150
+        }
+      ],
+      "officeId": 1150,
+      "latitude": 0,
+      "longitude": 0,
+      "createdDate": "2018-07-31T00:33:40.117",
+      "closedStatusId": "",
+      "isUnderContract": false,
+      "status": "Active"
+    },
+    {
+      "roomId": 88647,
+      "roomName": "Little Room",
+      "mlsId": "2577744761",
+      "address": {
+        "address1": "2200 Z 4th Ave",
+        "city": "T",
+        "stateId": "CA-NU",
+        "countryId": "CA"
+      },
+      "owners": [
+        {
+          "userId": 102286,
+          "firstName": "Manny",
+          "lastName": "Manager",
+          "transactionSideId": "listbuy",
+          "officeId": 1150
+        }
+      ],
+      "officeId": 1150,
+      "latitude": 0,
+      "longitude": 0,
+      "createdDate": "2018-07-31T01:14:49.843",
+      "closedStatusId": "",
+      "isUnderContract": false,
+      "status": "Active"
+    },
+    {
+      "roomId": 81742,
+      "roomName": "Loft47RoomTest",
+      "mlsId": "1234567989999",
+      "address": {
+        "address1": "2211 W 4th Ave Suite 228",
+        "address2": "No Address 2",
+        "city": "Vancouver",
+        "stateId": "CA-BC",
+        "postalCode": "8888",
+        "countryId": "CA"
+      },
+      "owners": [
+        {
+          "userId": 102286,
+          "firstName": "Manny",
+          "lastName": "Manager",
+          "transactionSideId": "listbuy",
+          "officeId": 1150
+        }
+      ],
+      "officeId": 1150,
+      "latitude": 49.268337,
+      "longitude": -123.1560696,
+      "createdDate": "2018-06-26T21:15:28.663",
+      "closedStatusId": "",
+      "isUnderContract": true,
+      "status": "Active",
+      "contractAmount": 36000
+    },
+    {
+      "roomId": 88634,
+      "roomName": "Lowe",
+      "mlsId": "6624108670",
+      "address": {
+        "address1": "2200 Z 4th Ave",
+        "city": "T",
+        "stateId": "CA-NU",
+        "countryId": "CA"
+      },
+      "owners": [
+        {
+          "userId": 102286,
+          "firstName": "Manny",
+          "lastName": "Manager",
+          "transactionSideId": "listbuy",
+          "officeId": 1150
+        }
+      ],
+      "officeId": 1150,
+      "latitude": 0,
+      "longitude": 0,
+      "createdDate": "2018-07-31T00:22:20.173",
+      "closedStatusId": "",
+      "isUnderContract": false,
+      "status": "Active"
+    },
+    {
+      "roomId": 88636,
+      "roomName": "Purdy",
+      "mlsId": "8787429157",
+      "address": {
+        "address1": "2200 Z 4th Ave",
+        "city": "T",
+        "stateId": "CA-NU",
+        "countryId": "CA"
+      },
+      "owners": [
+        {
+          "userId": 102286,
+          "firstName": "Manny",
+          "lastName": "Manager",
+          "transactionSideId": "listbuy",
+          "officeId": 1150
+        }
+      ],
+      "officeId": 1150,
+      "latitude": 0,
+      "longitude": 0,
+      "createdDate": "2018-07-31T00:26:27.983",
+      "closedStatusId": "",
+      "isUnderContract": false,
+      "status": "Active"
+    },
+    {
+      "roomId": 88635,
+      "roomName": "Runolfsdottir",
+      "mlsId": "6996370306",
+      "address": {
+        "address1": "2200 Z 4th Ave",
+        "city": "T",
+        "stateId": "CA-NU",
+        "countryId": "CA"
+      },
+      "owners": [
+        {
+          "userId": 102286,
+          "firstName": "Manny",
+          "lastName": "Manager",
+          "transactionSideId": "listbuy",
+          "officeId": 1150
+        }
+      ],
+      "officeId": 1150,
+      "latitude": 0,
+      "longitude": 0,
+      "createdDate": "2018-07-31T00:26:15.887",
+      "closedStatusId": "",
+      "isUnderContract": false,
+      "status": "Active"
+    }
+  ],
+  "resultSetSize": 6,
+  "previousUri": "https://stage.cartavi.com/restapi/v1/rooms?startPosition=0&count=100&sort=roomname&roomStatus=Open&ownedOnly=False",
+  "startPosition": 10,
+  "endPosition": 15
+}

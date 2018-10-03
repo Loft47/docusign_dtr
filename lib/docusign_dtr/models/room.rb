@@ -4,6 +4,8 @@ module DocusignDtr
       include Virtus.model
       attribute :address, DocusignDtr::Models::Address
       attribute :auction_details, DocusignDtr::Models::AuctionDetail
+      attribute :buyer1, DocusignDtr::Models::Contact
+      attribute :buyer2, DocusignDtr::Models::Contact
       attribute :closed_status_id
       attribute :company_room_status_id
       attribute :contract_amount
@@ -22,22 +24,58 @@ module DocusignDtr
       attribute :room_id
       attribute :room_image_url
       attribute :room_name
+      attribute :rooms
       attribute :status
       attribute :view_link
       attr_accessor :client
 
+      ACCEPTABLE_VALUES = {
+        room_status: %w[
+          Active
+          Pending
+          Closed
+          Open
+        ],
+        transaction_side: %w[
+          buy
+          sell
+          listbuy
+          refi
+        ],
+        sort: [
+          'RoomName',
+          'RoomName desc',
+          'CreatedDate',
+          'CreatedDate desc',
+          'ExpectedClosingDate',
+          'ExpectedClosingDate desc',
+          'LastUpdatedDate',
+          'LastUpdatedDate desc',
+          'ClosedDate',
+          'ClosedDate desc'
+        ],
+        date_range_type: %w[
+          Created
+          LastUpdated
+          Closed
+        ]
+      }.freeze
+
       def documents
         return [] unless room_id
+
         ::DocusignDtr::Document.new(client: client).all_by_room_id(room_id)
       end
 
       def task_lists
         return [] unless room_id
+
         ::DocusignDtr::TaskList.new(client: client).all_by_room_id(room_id)
       end
 
       def users
         return [] unless room_id
+
         ::DocusignDtr::User.new(client: client).all_by_room_id(room_id)
       end
     end
