@@ -22,9 +22,7 @@ module DocusignDtr
     class << self
       def call(options)
         @options = options
-        # binding.pry
         QUERY_PARAMS.each_with_object({}) do |(key, value), memo|
-          # binding.pry
           memo[value] = send(key) if @options.key? key
         end
       end

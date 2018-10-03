@@ -18,7 +18,7 @@ module Helpers
       .stub_request(:get, [url, '?count=100'].join)
       .to_return(body: batch1_file, status: 200, headers: { 'Content-Type' => 'application/json' })
     WebMock
-      .stub_request(:get, [url, '?count=100&start_position=10'].join)
+      .stub_request(:get, [url, '?count=100&startPosition=10'].join)
       .to_return(body: batch2_file, status: 200, headers: { 'Content-Type' => 'application/json' })
   end
 
