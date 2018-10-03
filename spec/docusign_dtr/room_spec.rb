@@ -78,20 +78,20 @@ RSpec.describe DocusignDtr::Room do
       ).and_return('rooms' => [])
       subject.all(
         count: 10,
-        startPosition: 10,
+        start_position: 10,
         search: '1234',
-        endDate: '1999-12-31 23:59:59',
-        roomStatus: 'Active',
-        ownedOnly: false,
-        transactionSide: 'buy',
-        isUnderContract: false,
-        regionId: 123,
-        officeId: 1,
-        hasSubmittedTaskList: false,
-        hasContractAmount: false,
+        end_date: '1999-12-31 23:59:59',
+        room_status: 'Active',
+        owned_only: false,
+        transaction_side: 'buy',
+        is_under_contract: false,
+        region_id: 123,
+        office_id: 1,
+        has_submitted_task_list: false,
+        has_contract_amount: false,
         sort: 'RoomName',
-        dateRangeType: 'Created',
-        startDate: '1999-01-01 00:00:01'
+        date_range_type: 'Created',
+        start_date: '1999-01-01 00:00:01'
       )
     end
   end

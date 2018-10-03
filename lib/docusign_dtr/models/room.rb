@@ -30,13 +30,13 @@ module DocusignDtr
       attr_accessor :client
 
       ACCEPTABLE_VALUES = {
-        roomStatus: %w[
+        room_status: %w[
           Active
           Pending
           Closed
           Open
         ],
-        transactionSide: %w[
+        transaction_side: %w[
           buy
           sell
           listbuy
@@ -54,7 +54,7 @@ module DocusignDtr
           'ClosedDate',
           'ClosedDate desc'
         ],
-        dateRangeType: %w[
+        date_range_type: %w[
           Created
           LastUpdated
           Closed
