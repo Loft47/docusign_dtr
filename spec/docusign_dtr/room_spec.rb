@@ -96,6 +96,62 @@ RSpec.describe DocusignDtr::Room do
     end
   end
 
+  describe '#query_params' do
+    it 'raise an error when room_status is invalid' do
+      expect { subject.all(room_status: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for room_status'
+      )
+    end
+
+    it 'raise an error when transaction_side is invalid' do
+      expect { subject.all(transaction_side: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for transaction_side'
+      )
+    end
+
+    it 'raise an error when sort is invalid' do
+      expect { subject.all(sort: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for sort'
+      )
+    end
+
+    it 'raise an error when start_date is invalid' do
+      expect { subject.all(start_date: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'Wrong is not a valid start_date'
+      )
+    end
+
+    it 'raise an error when end_date is invalid' do
+      expect { subject.all(end_date: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'Wrong is not a valid end_date'
+      )
+    end
+
+    it 'raise an error when owned_only is invalid' do
+      expect { subject.all(owned_only: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for owned_only'
+      )
+    end
+
+    it 'raise an error when is_under_contract is invalid' do
+      expect { subject.all(is_under_contract: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for is_under_contract'
+      )
+    end
+
+    it 'raise an error when has_submitted_task_list is invalid' do
+      expect { subject.all(has_submitted_task_list: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for has_submitted_task_list'
+      )
+    end
+
+    it 'raise an error when has_contract_amount is invalid' do
+      expect { subject.all(has_contract_amount: 'Wrong') }.to raise_error(
+        DocusignDtr::InvalidParameter, 'value Wrong is not valid for has_contract_amount'
+      )
+    end
+  end
+
   describe '#find' do
     it 'returns one room object' do
       docusign_mock(:room)

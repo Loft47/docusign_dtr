@@ -1,4 +1,5 @@
 module DocusignDtr
+  # rubocop:disable Metrics/ClassLength
   class QueryParamHelper
     # rubocop:disable Naming/PredicateName
     QUERY_PARAMS = {
@@ -40,27 +41,27 @@ module DocusignDtr
       end
 
       def room_status
-        raise "error: not acceptable value #{@options[:room_status]}" unless acceptable_value?(
-          :room_status, @options[:room_status]
-        )
+        unless acceptable_value?(:room_status, @options[:room_status])
+          raise DocusignDtr::InvalidParameter.new("value #{@options[:room_status]} is not valid for #{__method__}")
+        end
 
         @options[:room_status].to_s
       end
 
       def owned_only
-        to_boolean(@options[:owned_only])
+        to_boolean(@options[:owned_only], __method__)
       end
 
       def transaction_side
-        raise "error: not acceptable value #{@options[:transaction_side]}" unless acceptable_value?(
-          :transaction_side, @options[:transaction_side]
-        )
+        unless acceptable_value?(:transaction_side, @options[:transaction_side])
+          raise DocusignDtr::InvalidParameter.new("value #{@options[:transaction_side]} is not valid for #{__method__}")
+        end
 
         @options[:transaction_side].to_s
       end
 
       def is_under_contract
-        to_boolean(@options[:is_under_contract])
+        to_boolean(@options[:is_under_contract], __method__)
       end
 
       def region_id
@@ -72,46 +73,52 @@ module DocusignDtr
       end
 
       def has_submitted_task_list
-        to_boolean(@options[:has_submitted_task_list])
+        to_boolean(@options[:has_submitted_task_list], __method__)
       end
 
       def has_contract_amount
-        to_boolean(@options[:has_contract_amount])
+        to_boolean(@options[:has_contract_amount], __method__)
       end
 
       def sort
-        raise "error: not acceptable value #{@options[:sort]}" unless acceptable_value?(:sort, @options[:sort].to_s)
+        unless acceptable_value?(:sort, @options[:sort].to_s)
+          raise DocusignDtr::InvalidParameter.new("value #{@options[:sort]} is not valid for #{__method__}")
+        end
 
         @options[:sort].to_s
       end
 
       def date_range_type
-        raise "error: not acceptable value #{@options[:date_range_type]}" unless acceptable_value?(
-          :date_range_type, @options[:date_range_type]
-        )
+        unless acceptable_value?(:date_range_type, @options[:date_range_type])
+          raise DocusignDtr::InvalidParameter.new(
+            "value #{@options[:date_range_type]} is not valid for #{__method__}"
+          )
+        end
 
         @options[:date_range_type].to_s
       end
 
       def start_date
-        to_date(@options[:start_date].to_s)
+        to_date(@options[:start_date].to_s, __method__)
       end
 
       def end_date
-        to_date(@options[:end_date].to_s)
+        to_date(@options[:end_date].to_s, __method__)
       end
 
-      def to_boolean(value)
-        raise "error: #{value} is not a boolean value" unless !value.is_a?(FalseClass) || !value.is_a?(TrueClass)
+      def to_boolean(value, key)
+        unless value.is_a?(FalseClass) || value.is_a?(TrueClass)
+          raise DocusignDtr::InvalidParameter.new("value #{value} is not valid for #{key}")
+        end
 
         value
       end
 
-      def to_date(value)
+      def to_date(value, key)
         DateTime.parse(value)
         value
       rescue ArgumentError
-        "error: #{value} is not a valid date format"
+        raise DocusignDtr::InvalidParameter.new("#{value} is not a valid #{key}")
       end
 
       def acceptable_value?(key, value)
@@ -124,4 +131,5 @@ module DocusignDtr
     end
   end
   # rubocop:enable Naming/PredicateName
+  # rubocop:enable Metrics/ClassLength
 end
