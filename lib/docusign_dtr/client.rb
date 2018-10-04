@@ -160,7 +160,7 @@ module DocusignDtr
       @base_uri ||= @test_mode ? 'https://stage.cartavi.com/restapi/v1' : 'https://cartavi.com/restapi/v1'
     end
 
-    def get_user_data
+    def retrieve_user_data
       response = self.class.get(user_data_uri, headers: headers, timeout: 60)
       handle_error(response.code) if response.code != 200
       response.parsed_response
