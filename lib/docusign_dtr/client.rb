@@ -160,7 +160,25 @@ module DocusignDtr
       @base_uri ||= @test_mode ? 'https://stage.cartavi.com/restapi/v1' : 'https://cartavi.com/restapi/v1'
     end
 
+    def get_user_data
+      response = self.class.get(user_data_uri, headers: headers, timeout: 60)
+      handle_error(response.code) if response.code != 200
+      response.parsed_response
+    end
+
     private
+
+    def base_account_uri
+      "https://#{account_domain}/"
+    end
+
+    def account_domain
+      @test_mode ? 'account-d.docusign.com' : 'account.docusign.com'
+    end
+
+    def user_data_uri
+      @user_data_uri ||= URI("#{base_account_uri}oauth/userinfo")
+    end
 
     def headers
       {

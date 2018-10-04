@@ -18,7 +18,7 @@ module DocusignDtr
       end
 
       def request_token(code:, state: nil)
-        raise 'State does ont match. Possible CSRF!' if state && state != @config.state
+        raise 'State does not match. Possible CSRF!' if state && state != @config.state
 
         params = { grant_type: :authorization_code, code: code }
         response = self.class.post(auth_uri, query: params, headers: headers, timeout: 60)
