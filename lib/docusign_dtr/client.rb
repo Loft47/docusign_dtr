@@ -18,12 +18,12 @@ module DocusignDtr
     def raw(page, params = {})
       full_path = [base_uri, page].join
       response = self.class.get(full_path, query: params, headers: headers, timeout: 60)
-      handle_error(response.code) if response.code != 200
+      handle_error(response) if response.code != 200
       response.parsed_response
     end
 
-    def handle_error(response_code)
-      raise error_type(response_code), "Error communicating: Response code #{response_code}"
+    def handle_error(response)
+      raise error_type(response), "Error communicating: Response code #{response.code}"
     end
 
     def Document # rubocop:disable  Naming/MethodName
@@ -180,8 +180,8 @@ module DocusignDtr
       end
     end
 
-    def error_type(response_code)
-      case response_code
+    def error_type(response)
+      case response.code
       when 400
         # {"error":"invalid_grant"}
         return DocusignDtr::InvalidGrant if response.parsed_response['error'].match?(/grant/)
