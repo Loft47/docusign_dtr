@@ -115,7 +115,7 @@ module DocusignDtr
       end
 
       def to_date(value, key)
-        DateTime.parse(value)
+        Time.parse(value)
         value
       rescue ArgumentError
         raise DocusignDtr::InvalidParameter.new("#{value} is not a valid #{key}")

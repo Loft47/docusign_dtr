@@ -2,6 +2,8 @@ require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Client do
   subject { DocusignDtr::Client.new(token: :token) }
+  let(:prod_url) { 'https://realestate.docusign.com/restapi/v1' }
+  let(:test_url) { 'https://stage.cartavi.com/restapi/v1' }
 
   describe '#initialize' do
     it { expect(subject.token).to eq :token }
@@ -88,7 +90,7 @@ RSpec.describe DocusignDtr::Client do
   end
 
   describe '#base_uri' do
-    it { expect(DocusignDtr::Client.new(token: :t, test_mode: false).base_uri).to eq 'https://cartavi.com/restapi/v1' }
-    it { expect(DocusignDtr::Client.new(token: :t).base_uri).to eq 'https://stage.cartavi.com/restapi/v1' }
+    it { expect(DocusignDtr::Client.new(token: :t, test_mode: false).base_uri).to eq prod_url }
+    it { expect(DocusignDtr::Client.new(token: :t).base_uri).to eq test_url }
   end
 end
