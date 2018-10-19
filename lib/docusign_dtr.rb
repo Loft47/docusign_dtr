@@ -74,6 +74,7 @@ require 'docusign_dtr/models/task_list'
 require 'docusign_dtr/models/title'
 require 'docusign_dtr/models/profile'
 require 'docusign_dtr/models/user'
+require 'docusign_dtr/models/userinfo'
 require 'docusign_dtr/models/activity'
 require 'docusign_dtr/models/room'
 
