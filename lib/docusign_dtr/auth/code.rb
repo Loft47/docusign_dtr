@@ -26,7 +26,7 @@ module DocusignDtr
 
         params = { grant_type: :authorization_code, code: code }
         response = self.class.post(auth_uri, query: params, headers: headers, timeout: 60)
-        handle_error(response.code) if response.code != 200
+        handle_error(response) if response.code != 200
         @token_response = DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
       end
 
@@ -35,7 +35,7 @@ module DocusignDtr
 
         params = { grant_type: :refresh_token, refresh_token: @token_response.refresh_token }
         response = self.class.post("#{base_uri}oauth/token", query: params, headers: headers, timeout: 60)
-        handle_error(response.code) if response.code != 200
+        handle_error(response) if response.code != 200
         @token_response = DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
       end
 
@@ -43,7 +43,7 @@ module DocusignDtr
         raise 'No token to obtain userinfo' unless @token_response&.access_token
 
         response = self.class.get("#{base_uri}oauth/userinfo", headers: user_info_headers, timeout: 60)
-        handle_error(response.code) if response.code != 200
+        handle_error(response) if response.code != 200
         @userinfo = DocusignDtr::Models::Userinfo.new(response.parsed_response)
       end
 
