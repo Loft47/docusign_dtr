@@ -40,8 +40,8 @@ module Helpers
 
   def standard_endpoints(lookup)
     {
-      rooms:           'rooms',
-      room:            'rooms/123'
+      rooms: 'rooms',
+      room: 'rooms/123'
     }[lookup.to_sym]
   end
 end

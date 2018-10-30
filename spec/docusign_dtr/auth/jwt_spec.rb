@@ -76,6 +76,14 @@ RSpec.describe DocusignDtr::Auth::Jwt do
       end
     end
 
+    context 'Api limit exceeded' do
+      let(:json) { '{ "error": "HOURLY_APIINVOCATION_LIMIT_EXCEEDED" }' }
+      it 'should return a Api Limit Exceeded error' do
+        mockit(code: 400, body: json)
+        expect { subject.request_token }.to raise_error DocusignDtr::ApiLimitExceeded
+      end
+    end
+
     context 'Unauthorized' do
       it 'should return an Unauthorized error' do
         mockit(code: 401)
