@@ -65,25 +65,7 @@ module DocusignDtr
       end
 
       def handle_error(response)
-        raise error_type(response), "Error communicating: Response code #{response.code}"
-      end
-
-      def error_type(response)
-        case response.code
-        when 400
-          # {"error":"invalid_grant"}
-          return DocusignDtr::InvalidGrant if response.parsed_response['error'].match?(/grant/)
-
-          DocusignDtr::ConsentRequired # {"error":"consent_required"}
-        when 401
-          DocusignDtr::Unauthorized
-        when 403
-          DocusignDtr::Forbidden
-        when 204
-          DocusignDtr::NoContent
-        else
-          StandardError
-        end
+        raise DocusignDtr::Auth::Error.new(response: response).build
       end
     end
   end
