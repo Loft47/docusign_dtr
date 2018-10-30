@@ -40,7 +40,13 @@ module DocusignDtr
       end
 
       def error_code
-        @error_code ||= @response.parsed_response.transform_keys(&:to_sym).fetch(:error, '')
+        return '' unless parsed_response
+
+        @error_code ||= parsed_response.fetch(:error) || parsed_response.fetch(:errorCode, '')
+      end
+
+      def parsed_response
+        @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym)
       end
     end
   end
