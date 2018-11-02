@@ -36,13 +36,17 @@ module DocusignDtr
         return DocusignDtr::InvalidGrant if error_code.match?(/grant/)
         return DocusignDtr::ApiLimitExceeded if error_code.match?(/HOURLY_APIINVOCATION_LIMIT_EXCEEDED/)
 
-        DocusignDtr::ConsentRequired
+        DocusignDtr::ConsentRequired.new(error_message)
       end
 
       def error_code
         return '' unless parsed_response
 
         @error_code ||= parsed_response.fetch(:error, nil) || parsed_response.fetch(:errorCode, '')
+      end
+
+      def error_message
+        parsed_response.fetch(:message, nil) || parsed_response.fetch(:errorDetails, '')
       end
 
       def parsed_response
