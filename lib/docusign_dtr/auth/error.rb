@@ -42,7 +42,7 @@ module DocusignDtr
       def error_code
         return '' unless parsed_response
 
-        @error_code ||= parsed_response.fetch(:error) || parsed_response.fetch(:errorCode, '')
+        @error_code ||= parsed_response.fetch(:error, nil) || parsed_response.fetch(:errorCode, '')
       end
 
       def parsed_response
