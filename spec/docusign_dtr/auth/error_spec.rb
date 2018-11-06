@@ -8,12 +8,6 @@ RSpec.describe DocusignDtr::Auth::Error do
   let(:parsed_response) { nil }
   let(:full_message) { "Error communicating: Response code #{code}" }
 
-  describe '#full_message' do
-    it 'returns error message with code' do
-      expect(subject.full_message).to include(code.to_s)
-    end
-  end
-
   describe '#build' do
     context 'success response' do
       it 'returns no error' do

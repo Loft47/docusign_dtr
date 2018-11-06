@@ -12,10 +12,6 @@ module DocusignDtr
         raise exception_class, (message.present? ? message : full_message)
       end
 
-      def full_message
-        "Error communicating: Response code #{@response.code}"
-      end
-
       def exception
         case @response.code
         when 400
@@ -27,7 +23,7 @@ module DocusignDtr
         when 204
           DocusignDtr::NoContent
         else
-          StandardError
+          standard_error
         end
       end
 
@@ -38,7 +34,7 @@ module DocusignDtr
         return DocusignDtr::ApiLimitExceeded if error_code.match?(/HOURLY_APIINVOCATION_LIMIT_EXCEEDED/)
         return DocusignDtr::ConsentRequired if error_code.match?(/consent_required/)
 
-        [StandardError, [error_code, error_message].compact.join(': ')]
+        standard_error
       end
 
       def error_code
@@ -53,6 +49,14 @@ module DocusignDtr
 
       def parsed_response
         @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym)
+      end
+
+      def standard_error
+        [StandardError, [error_code, error_message].compact.join(': ')]
+      end
+
+      def full_message
+        "Error communicating: Response code #{@response.code}"
       end
     end
   end
