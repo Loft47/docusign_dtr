@@ -36,7 +36,7 @@ module DocusignDtr
         return DocusignDtr::InvalidGrant if error_code.match?(/grant/)
         return DocusignDtr::ApiLimitExceeded if error_code.match?(/HOURLY_APIINVOCATION_LIMIT_EXCEEDED/)
 
-        DocusignDtr::ConsentRequired.new(error_message)
+        DocusignDtr::ConsentRequired if error_code.match?(/consent_required/)
       end
 
       def error_code
