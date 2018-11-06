@@ -3,9 +3,10 @@ require_relative '../../spec_helper'
 RSpec.describe DocusignDtr::Auth::Error do
   subject { DocusignDtr::Auth::Error.new(response: response) }
 
-  let(:response) { double(code: code, parsed_response: json) }
+  let(:response) { double(code: code, parsed_response: parsed_response) }
   let(:code) { 200 }
-  let(:json) { nil }
+  let(:parsed_response) { nil }
+  let(:full_message) { "Error communicating: Response code #{code}" }
 
   describe '#full_message' do
     it 'returns error message with code' do
@@ -23,21 +24,21 @@ RSpec.describe DocusignDtr::Auth::Error do
     context 'unauthorized' do
       let(:code) { 401 }
       it 'returns correct error class' do
-        expect(subject.build.class).to eq DocusignDtr::Unauthorized
+        expect { subject.build }.to raise_error(DocusignDtr::Unauthorized, full_message)
       end
     end
 
     context 'forbidden' do
       let(:code) { 403 }
       it 'returns correct error class' do
-        expect(subject.build.class).to eq DocusignDtr::Forbidden
+        expect { subject.build }.to raise_error(DocusignDtr::Forbidden, full_message)
       end
     end
 
     context 'no content' do
       let(:code) { 204 }
       it 'returns correct error class' do
-        expect(subject.build.class).to eq DocusignDtr::NoContent
+        expect { subject.build }.to raise_error(DocusignDtr::NoContent, full_message)
       end
     end
 
@@ -45,23 +46,34 @@ RSpec.describe DocusignDtr::Auth::Error do
       let(:code) { 400 }
 
       context 'missing consent' do
-        let(:json) { { "error": 'consent_required' } }
+        let(:parsed_response) { { "error": 'consent_required' } }
         it 'returns correct error class' do
-          expect(subject.build.class).to eq DocusignDtr::ConsentRequired
+          expect { subject.build }.to raise_error(DocusignDtr::ConsentRequired, full_message)
         end
       end
 
       context 'invalid grant' do
-        let(:json) { { "error": 'invalid_grant' } }
+        let(:parsed_response) { { "error": 'invalid_grant' } }
         it 'returns correct error class' do
-          expect(subject.build.class).to eq DocusignDtr::InvalidGrant
+          expect { subject.build }.to raise_error(DocusignDtr::InvalidGrant, full_message)
         end
       end
 
       context 'api limit exceeded' do
-        let(:json) { { "error": 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED' } }
+        let(:parsed_response) { { "error": 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED' } }
         it 'returns correct error class' do
-          expect(subject.build.class).to eq DocusignDtr::ApiLimitExceeded
+          expect { subject.build }.to raise_error(DocusignDtr::ApiLimitExceeded, full_message)
+        end
+      end
+
+      context 'standard / unknown error' do
+        let(:parsed_response) { { "errorCode": 'unknown error', "errorDetails": 'something went wrong' } }
+        it 'returns correct error class' do
+          expect { subject.build }.to raise_error(StandardError)
+        end
+
+        it 'returns correct message' do
+          expect { subject.build }.to raise_error(StandardError, 'unknown error: something went wrong')
         end
       end
     end

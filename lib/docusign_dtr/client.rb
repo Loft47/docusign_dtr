@@ -18,12 +18,12 @@ module DocusignDtr
     def raw(page, params = {})
       full_path = [base_uri, page].join
       response = self.class.get(full_path, query: params, headers: headers, timeout: 60)
-      handle_error(response) if response.code != 200
+      handle_error(response)
       response.parsed_response
     end
 
     def handle_error(response)
-      raise DocusignDtr::Auth::Error.new(response: response).build
+      DocusignDtr::Auth::Error.new(response: response).build
     end
 
     def Document # rubocop:disable  Naming/MethodName

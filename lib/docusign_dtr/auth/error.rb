@@ -8,7 +8,8 @@ module DocusignDtr
       def build
         return nil if @response.code == 200
 
-        exception.new(full_message)
+        exception_class, message = exception
+        raise exception_class, (message.present? ? message : full_message)
       end
 
       def full_message
@@ -35,8 +36,9 @@ module DocusignDtr
       def general_error
         return DocusignDtr::InvalidGrant if error_code.match?(/grant/)
         return DocusignDtr::ApiLimitExceeded if error_code.match?(/HOURLY_APIINVOCATION_LIMIT_EXCEEDED/)
+        return DocusignDtr::ConsentRequired if error_code.match?(/consent_required/)
 
-        DocusignDtr::ConsentRequired if error_code.match?(/consent_required/)
+        [StandardError, [error_code, error_message].compact.join(': ')]
       end
 
       def error_code
