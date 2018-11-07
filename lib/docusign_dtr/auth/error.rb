@@ -8,8 +8,8 @@ module DocusignDtr
       def build
         return nil if @response.code == 200
 
-        exception_class, message = exception
-        raise exception_class, (message.present? ? message : full_message)
+        message = exception == StandardError ? standard_error_message : full_message
+        raise exception.new(message)
       end
 
       def exception
@@ -23,7 +23,7 @@ module DocusignDtr
         when 204
           DocusignDtr::NoContent
         else
-          standard_error
+          StandardError
         end
       end
 
@@ -34,7 +34,7 @@ module DocusignDtr
         return DocusignDtr::ApiLimitExceeded if error_code.match?(/HOURLY_APIINVOCATION_LIMIT_EXCEEDED/)
         return DocusignDtr::ConsentRequired if error_code.match?(/consent_required/)
 
-        standard_error
+        StandardError
       end
 
       def error_code
@@ -51,8 +51,8 @@ module DocusignDtr
         @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym)
       end
 
-      def standard_error
-        [StandardError, [error_code, error_message].compact.join(': ')]
+      def standard_error_message
+        [error_code, error_message].join(': ')
       end
 
       def full_message
