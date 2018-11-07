@@ -8,8 +8,7 @@ module DocusignDtr
       def build
         return nil if @response.code == 200
 
-        message = exception == StandardError ? standard_error_message : full_message
-        raise exception.new(message)
+        raise exception.new(standard_error_message)
       end
 
       def exception
@@ -48,15 +47,11 @@ module DocusignDtr
       end
 
       def parsed_response
-        @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym)
+        @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym) || {}
       end
 
       def standard_error_message
-        [error_code, error_message].join(': ')
-      end
-
-      def full_message
-        "Error communicating: Response code #{@response.code}"
+        [error_code, error_message].compact.reject(&:empty?).join(': ')
       end
     end
   end

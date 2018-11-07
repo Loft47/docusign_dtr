@@ -18,21 +18,21 @@ RSpec.describe DocusignDtr::Auth::Error do
     context 'unauthorized' do
       let(:code) { 401 }
       it 'returns correct error class' do
-        expect { subject.build }.to raise_error(DocusignDtr::Unauthorized, full_message)
+        expect { subject.build }.to raise_error(DocusignDtr::Unauthorized)
       end
     end
 
     context 'forbidden' do
       let(:code) { 403 }
       it 'returns correct error class' do
-        expect { subject.build }.to raise_error(DocusignDtr::Forbidden, full_message)
+        expect { subject.build }.to raise_error(DocusignDtr::Forbidden, '')
       end
     end
 
     context 'no content' do
       let(:code) { 204 }
       it 'returns correct error class' do
-        expect { subject.build }.to raise_error(DocusignDtr::NoContent, full_message)
+        expect { subject.build }.to raise_error(DocusignDtr::NoContent, '')
       end
     end
 
@@ -42,21 +42,23 @@ RSpec.describe DocusignDtr::Auth::Error do
       context 'missing consent' do
         let(:parsed_response) { { "error": 'consent_required' } }
         it 'returns correct error class' do
-          expect { subject.build }.to raise_error(DocusignDtr::ConsentRequired, full_message)
+          expect { subject.build }.to raise_error(DocusignDtr::ConsentRequired, 'consent_required')
         end
       end
 
       context 'invalid grant' do
         let(:parsed_response) { { "error": 'invalid_grant' } }
         it 'returns correct error class' do
-          expect { subject.build }.to raise_error(DocusignDtr::InvalidGrant, full_message)
+          expect { subject.build }.to raise_error(DocusignDtr::InvalidGrant, 'invalid_grant')
         end
       end
 
       context 'api limit exceeded' do
-        let(:parsed_response) { { "error": 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED' } }
+        let(:parsed_response) { { "errorCode": 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED' } }
         it 'returns correct error class' do
-          expect { subject.build }.to raise_error(DocusignDtr::ApiLimitExceeded, full_message)
+          expect { subject.build }.to raise_error(
+            DocusignDtr::ApiLimitExceeded, 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED'
+          )
         end
       end
 
