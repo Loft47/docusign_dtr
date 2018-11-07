@@ -8,11 +8,7 @@ module DocusignDtr
       def build
         return nil if @response.code == 200
 
-        exception.new(full_message)
-      end
-
-      def full_message
-        "Error communicating: Response code #{@response.code}"
+        raise exception.new(standard_error_message)
       end
 
       def exception
@@ -35,8 +31,9 @@ module DocusignDtr
       def general_error
         return DocusignDtr::InvalidGrant if error_code.match?(/grant/)
         return DocusignDtr::ApiLimitExceeded if error_code.match?(/HOURLY_APIINVOCATION_LIMIT_EXCEEDED/)
+        return DocusignDtr::ConsentRequired if error_code.match?(/consent_required/)
 
-        DocusignDtr::ConsentRequired.new(error_message)
+        StandardError
       end
 
       def error_code
@@ -50,7 +47,11 @@ module DocusignDtr
       end
 
       def parsed_response
-        @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym)
+        @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym) || {}
+      end
+
+      def standard_error_message
+        [error_code, error_message].compact.reject(&:empty?).join(': ')
       end
     end
   end

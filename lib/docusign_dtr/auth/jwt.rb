@@ -23,7 +23,7 @@ module DocusignDtr
 
       def request_token
         response = self.class.post(auth_uri, query: access_token_params, headers: base_headers, timeout: 60)
-        handle_error(response) if response.code != 200
+        handle_error(response)
         @token_response = DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
       end
 

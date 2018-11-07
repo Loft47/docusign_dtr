@@ -65,7 +65,7 @@ module DocusignDtr
       end
 
       def handle_error(response)
-        raise DocusignDtr::Auth::Error.new(response: response).build
+        DocusignDtr::Auth::Error.new(response: response).build
       end
     end
   end
