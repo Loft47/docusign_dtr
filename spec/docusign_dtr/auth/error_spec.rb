@@ -22,6 +22,20 @@ RSpec.describe DocusignDtr::Auth::Error do
       end
     end
 
+    context 'bad request' do
+      let(:code) { 400 }
+      it 'returns correct error class' do
+        expect { subject.build }.to raise_error(StandardError)
+      end
+
+      context 'when parsed response is a string' do
+        let(:parsed_response) { 'Bad Request' }
+        it 'returns correct error class' do
+          expect { subject.build }.to raise_error(StandardError, 'Bad Request')
+        end
+      end
+    end
+
     context 'forbidden' do
       let(:code) { 403 }
       it 'returns correct error class' do
