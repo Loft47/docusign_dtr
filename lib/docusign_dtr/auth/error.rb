@@ -47,7 +47,13 @@ module DocusignDtr
       end
 
       def parsed_response
-        @parsed_response ||= @response.parsed_response&.transform_keys(&:to_sym) || {}
+        @parsed_response ||= error_object
+      end
+
+      def error_object
+        return { message: @response.parsed_response } if @response.parsed_response.instance_of?(String)
+
+        @response.parsed_response&.transform_keys(&:to_sym) || {}
       end
 
       def standard_error_message
