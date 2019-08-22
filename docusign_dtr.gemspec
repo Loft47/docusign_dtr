@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = %(http://github.com/Loft47/docusign_dtr)
   spec.license       = 'MIT'
   spec.cert_chain    = ['certs/loft-gem-public_cert.pem']
-  spec.signing_key   = File.expand_path('~/.ssh/certs/loft-gem-public_cert.pem') if $PROGRAM_NAME.end_with?('gem')
+  spec.signing_key   = File.expand_path('~/.ssh/loft-gem-private_key.pem') if $PROGRAM_NAME.end_with?('gem')
   spec.required_ruby_version = '~> 2.5'
 
   raise 'RubyGems 2.5 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
