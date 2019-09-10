@@ -724,7 +724,7 @@ RSpec.describe DocusignDtr::Room do
         room_image_url: nil,
         room_name: 'The Room',
         status: 'Active',
-        view_link: 'https://stage.cartavi.com/transaction/88593'
+        view_link: 'https://demo.rooms.docusign.com/transaction/88593'
       )
     end
   end

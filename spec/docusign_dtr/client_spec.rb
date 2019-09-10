@@ -2,8 +2,8 @@ require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Client do
   subject { DocusignDtr::Client.new(token: :token) }
-  let(:prod_url) { 'https://realestate.docusign.com/restapi/v1' }
-  let(:test_url) { 'https://stage.cartavi.com/restapi/v1' }
+  let(:prod_url) { 'https://rooms.docusign.com/restapi/v1' }
+  let(:test_url) { 'https://demo.rooms.docusign.com/restapi/v1' }
 
   describe '#initialize' do
     it { expect(subject.token).to eq :token }
@@ -76,7 +76,7 @@ RSpec.describe DocusignDtr::Client do
   def mock(code: 200)
     WebMock.reset!
     WebMock
-      .stub_request(:get, 'https://stage.cartavi.com/restapi/v1/test?id=47')
+      .stub_request(:get, 'https://demo.rooms.docusign.com/restapi/v1/test?id=47')
       .with(
         headers: {
           'Accept': 'application/json',

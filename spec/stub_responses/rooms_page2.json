@@ -167,7 +167,7 @@
     }
   ],
   "resultSetSize": 6,
-  "previousUri": "https://stage.cartavi.com/restapi/v1/rooms?startPosition=0&count=100&sort=roomname&roomStatus=Open&ownedOnly=False",
+  "previousUri": "https://demo.rooms.docusign.com/restapi/v1/rooms?startPosition=0&count=100&sort=roomname&roomStatus=Open&ownedOnly=False",
   "startPosition": 10,
   "endPosition": 15
 }
