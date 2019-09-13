@@ -39,8 +39,8 @@ RSpec.describe DocusignDtr::Models::Document do
       people_with_access: 1,
       is_signed: false,
       links: [
-        { name: 'Download', url: 'https://stage.cartavi.com/restapi/v1/documents/114254' },
-        { name: 'Details', url: 'https://stage.cartavi.com/restapi/v1/documents/114254/details' }
+        { name: 'Download', url: 'https://demo.rooms.docusign.com/restapi/v1/documents/114254' },
+        { name: 'Details', url: 'https://demo.rooms.docusign.com/restapi/v1/documents/114254/details' }
       ]
     }
   end

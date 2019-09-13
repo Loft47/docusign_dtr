@@ -34,7 +34,7 @@ module Helpers
   end
 
   def endpoint_to_url(endpoint)
-    dotloop_url = 'https://stage.cartavi.com/restapi/v1/'
+    dotloop_url = 'https://demo.rooms.docusign.com/restapi/v1/'
     [dotloop_url, endpoint].join
   end
 

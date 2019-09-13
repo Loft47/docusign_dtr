@@ -37,7 +37,7 @@ end
 
 puts "Your access token is #{auth.access_token}"
 ```
-Now you can use the ```access_token``` in the docusign [api explorer](https://stage.cartavi.com/restapi/swashbuckle/ui/index).
+Now you can use the ```access_token``` in the docusign [api explorer](https://demo.rooms.docusign.com/restapi/swashbuckle/ui/index).
 
 When you receive a DocusignDtr::ConsentRequired error Send your client to the grant_url above and they will be required to authenticate your app. Once they authorize your app they will be redirected to the redirect_url  (for now its google.com)
 When you receive an auth object you can use the access_token to connect to resources:
