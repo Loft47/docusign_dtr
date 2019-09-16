@@ -157,7 +157,7 @@ module DocusignDtr
     end
 
     def base_uri
-      @base_uri ||= @test_mode ? 'https://stage.cartavi.com/restapi/v1' : 'https://realestate.docusign.com/restapi/v1'
+      @base_uri ||= @test_mode ? 'https://demo.rooms.docusign.com/restapi/v1' : 'https://rooms.docusign.com/restapi/v1'
     end
 
     private
