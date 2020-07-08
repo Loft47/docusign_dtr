@@ -58,12 +58,13 @@ RSpec.describe DocusignDtr::Room do
     end
 
     it 'accepts additional parameters' do
+      ENV['TZ'] = 'America/Toronto'
       expect(client).to receive(:get).with(
         '/rooms',
         count: 10,
         startPosition: 10,
         search: '1234',
-        endDate: '1999-12-31 23:59:59',
+        endDate: '1999-12-31T23:59:59-05:00',
         roomStatus: 'Active',
         ownedOnly: false,
         transactionSide: 'buy',
@@ -74,7 +75,7 @@ RSpec.describe DocusignDtr::Room do
         hasContractAmount: false,
         sort: 'RoomName',
         dateRangeType: 'Created',
-        startDate: '1999-01-01 00:00:01'
+        startDate: '1999-01-01T00:00:01-05:00'
       ).and_return('rooms' => [])
       subject.all(
         count: 10,
