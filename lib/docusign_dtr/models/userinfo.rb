@@ -8,6 +8,10 @@ module DocusignDtr
       attribute :given_name
       attribute :name
       attribute :sub
+
+      def guid
+        (accounts&.first || {}).fetch('account_id', sub)
+      end
     end
   end
 end

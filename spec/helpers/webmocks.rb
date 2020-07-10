@@ -15,10 +15,10 @@ module Helpers
     url = endpoint_to_url(endpoint)
     WebMock.reset!
     WebMock
-      .stub_request(:get, [url, '?count=100'].join)
+      .stub_request(:get, [url, '?count=100&startPosition=0'].join)
       .to_return(body: batch1_file, status: 200, headers: { 'Content-Type' => 'application/json' })
     WebMock
-      .stub_request(:get, [url, '?count=100&startPosition=10'].join)
+      .stub_request(:get, [url, '?count=100&startPosition=100'].join)
       .to_return(body: batch2_file, status: 200, headers: { 'Content-Type' => 'application/json' })
   end
 
