@@ -11,10 +11,13 @@ module DocusignDtr
 
     def all(options = {})
       options[:count] ||= MAX_ROOMS
+      options[:start_position] ||= 0
       rooms = []
       (1..MAX_BATCHES).each do
         current_batch = batch(options)
         rooms += current_batch
+        options[:start_position] += options[:count]
+
         break if current_batch.size < options[:count]
       end
       rooms
