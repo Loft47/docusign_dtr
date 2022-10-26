@@ -3,7 +3,7 @@ module DocusignDtr
   module Auth
     class Jwt < Base
       EXPIRES_IN = 3600
-      # rubocop:disable Metrics/ParameterLists
+      # rubocop:disable Metrics/ParameterLists, Lint/MissingSuper
       def initialize(integrator_key:,
                      private_key:,
                      user_guid:,
@@ -19,7 +19,7 @@ module DocusignDtr
           user_guid: user_guid
         )
       end
-      # rubocop:enable Metrics/ParameterLists
+      # rubocop:enable Metrics/ParameterLists, Lint/MissingSuper
 
       def request_token
         response = self.class.post(auth_uri, query: access_token_params, headers: base_headers, timeout: 60)

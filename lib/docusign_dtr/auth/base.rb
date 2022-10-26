@@ -5,8 +5,7 @@ module DocusignDtr
     class Base
       include HTTParty
 
-      attr_accessor :config
-      attr_accessor :token_response
+      attr_accessor :config, :token_response
 
       def initialize
         @config = DocusignDtr::Models::AuthConfig.new

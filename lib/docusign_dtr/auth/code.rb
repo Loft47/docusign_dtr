@@ -3,7 +3,8 @@ module DocusignDtr
   module Auth
     class Code < Base
       attr_accessor :userinfo
-      # rubocop:disable Metrics/ParameterLists
+
+      # rubocop:disable Metrics/ParameterLists, Lint/MissingSuper
       def initialize(integrator_key:,
                      secret_key:,
                      redirect_uri:,
@@ -19,7 +20,7 @@ module DocusignDtr
           test_mode: test_mode
         )
       end
-      # rubocop:enable Metrics/ParameterLists
+      # rubocop:enable Metrics/ParameterLists, Lint/MissingSuper
 
       def request_token(code:, state: nil)
         raise 'State does not match. Possible CSRF!' if state && state != @config.state

@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.cert_chain    = ['certs/gem-public_cert.pem']
   spec.signing_key   = File.expand_path('~/.ssh/gem-private_key.pem') if $PROGRAM_NAME.end_with?('gem')
-  spec.required_ruby_version = '~> 2.5'
+  spec.required_ruby_version = '~> 2.7'
 
   raise 'RubyGems 2.5 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
 
@@ -25,17 +25,17 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'httparty', '~> 0.16'
+  spec.add_runtime_dependency 'httparty', '~> 0.20'
   spec.add_runtime_dependency 'jwt', '~> 2.1'
-  spec.add_runtime_dependency 'plissken', '~> 1.2'
+  spec.add_runtime_dependency 'plissken', '~> 2'
   spec.add_runtime_dependency 'virtus', '~> 1.0'
-  spec.add_development_dependency 'bundler', '~> 2.2.20'
-  spec.add_development_dependency 'coveralls_reborn', '~> 0.24.0'
-  spec.add_development_dependency 'pry', '~> 0.11'
-  spec.add_development_dependency 'rake', '~> 12.3'
-  spec.add_development_dependency 'rspec', '~> 3.8'
-  spec.add_development_dependency 'rubocop', '~> 0.58'
-  spec.add_development_dependency 'simplecov', '~> 0.18'
+  spec.add_development_dependency 'bundler', '~> 2'
+  spec.add_development_dependency 'coveralls_reborn', '~> 0.25.0'
+  spec.add_development_dependency 'pry', '~> 0.14'
+  spec.add_development_dependency 'rake', '~> 13'
+  spec.add_development_dependency 'rspec', '~> 3'
+  spec.add_development_dependency 'rubocop', '~> 1'
+  spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'travis', '~> 1.8'
-  spec.add_development_dependency 'webmock', '~> 3.4'
+  spec.add_development_dependency 'webmock', '~> 3'
 end

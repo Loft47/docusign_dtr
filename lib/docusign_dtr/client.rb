@@ -145,13 +145,10 @@ module DocusignDtr
     end
 
     def snakify(object)
-      if object.is_a? Array
-        object.map(&:to_snake_keys)
-      elsif object.is_a? String
-        object
-      else
-        object.to_snake_keys
-      end
+      return object.map(&:to_snake_keys) if object.is_a? Array
+      return object if object.is_a? String
+
+      object.to_snake_keys
     end
   end
 end
