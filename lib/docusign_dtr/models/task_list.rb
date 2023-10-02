@@ -14,7 +14,7 @@ module DocusignDtr
       attribute :review_status
       attribute :status
       attribute :submitted_for_review_date
-      attribute :tasks, Array[DocusignDtr::Models::Task]
+      attribute :tasks, [DocusignDtr::Models::Task]
       attribute :task_list_template_id
       attr_accessor :client
     end

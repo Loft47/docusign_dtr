@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Profile do
-  subject { DocusignDtr::Profile.new(client: client) }
+  subject { DocusignDtr::Profile.new(client:) }
   let(:client) { double }
   let(:profile_attrs) do
     {

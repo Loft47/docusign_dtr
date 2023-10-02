@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaCountry do
-  subject { DocusignDtr::MetaCountry.new(client: client) }
+  subject { DocusignDtr::MetaCountry.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::TaskList do
-  subject { DocusignDtr::TaskList.new(client: client) }
+  subject { DocusignDtr::TaskList.new(client:) }
   let(:client) { double }
   let(:room_id) { 99 }
   let(:task_lists) { [task_list] }

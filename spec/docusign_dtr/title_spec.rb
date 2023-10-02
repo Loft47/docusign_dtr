@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Title do
-  subject { DocusignDtr::Title.new(client: client) }
+  subject { DocusignDtr::Title.new(client:) }
   let(:client) { double }
   let(:titles) { [title] }
   let(:title) do

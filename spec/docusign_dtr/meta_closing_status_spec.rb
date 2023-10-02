@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaClosingStatus do
-  subject { DocusignDtr::MetaClosingStatus.new(client: client) }
+  subject { DocusignDtr::MetaClosingStatus.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

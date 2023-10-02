@@ -12,12 +12,12 @@ module DocusignDtr
                      state: nil,
                      application: 'docusign_dtr')
         @config = DocusignDtr::Models::AuthConfig.new(
-          application: application,
-          integrator_key: integrator_key,
-          redirect_uri: redirect_uri,
-          secret_key: secret_key,
+          application:,
+          integrator_key:,
+          redirect_uri:,
+          secret_key:,
           state: state || SecureRandom.uuid,
-          test_mode: test_mode
+          test_mode:
         )
       end
       # rubocop:enable Metrics/ParameterLists, Lint/MissingSuper
@@ -25,8 +25,8 @@ module DocusignDtr
       def request_token(code:, state: nil)
         raise 'State does not match. Possible CSRF!' if state && state != @config.state
 
-        params = { grant_type: :authorization_code, code: code }
-        response = self.class.post(auth_uri, query: params, headers: headers, timeout: 60)
+        params = { grant_type: :authorization_code, code: }
+        response = self.class.post(auth_uri, query: params, headers:, timeout: 60)
         handle_error(response)
         @token_response = DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
       end
@@ -35,7 +35,7 @@ module DocusignDtr
         raise 'No token to refresh' unless @token_response&.refresh_token
 
         params = { grant_type: :refresh_token, refresh_token: @token_response.refresh_token }
-        response = self.class.post("#{base_uri}oauth/token", query: params, headers: headers, timeout: 60)
+        response = self.class.post("#{base_uri}oauth/token", query: params, headers:, timeout: 60)
         handle_error(response)
         @token_response = DocusignDtr::Models::AuthTokenResponse.new(response.parsed_response)
       end
@@ -51,11 +51,11 @@ module DocusignDtr
       private
 
       def headers
-        base_headers.merge('Authorization': "Basic #{encoded_integrator_key}")
+        base_headers.merge(Authorization: "Basic #{encoded_integrator_key}")
       end
 
       def user_info_headers
-        base_headers.merge('Authorization': "Bearer #{@token_response.access_token}")
+        base_headers.merge(Authorization: "Bearer #{@token_response.access_token}")
       end
     end
   end

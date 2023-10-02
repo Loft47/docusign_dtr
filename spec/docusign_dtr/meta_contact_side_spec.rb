@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaContactSide do
-  subject { DocusignDtr::MetaContactSide.new(client: client) }
+  subject { DocusignDtr::MetaContactSide.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaCurrency do
-  subject { DocusignDtr::MetaCurrency.new(client: client) }
+  subject { DocusignDtr::MetaCurrency.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

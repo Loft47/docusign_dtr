@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaTimezone do
-  subject { DocusignDtr::MetaTimezone.new(client: client) }
+  subject { DocusignDtr::MetaTimezone.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

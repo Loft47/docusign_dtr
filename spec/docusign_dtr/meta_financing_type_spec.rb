@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaFinancingType do
-  subject { DocusignDtr::MetaFinancingType.new(client: client) }
+  subject { DocusignDtr::MetaFinancingType.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaRole do
-  subject { DocusignDtr::MetaRole.new(client: client) }
+  subject { DocusignDtr::MetaRole.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

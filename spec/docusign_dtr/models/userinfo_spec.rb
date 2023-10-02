@@ -3,7 +3,7 @@ require_relative '../../spec_helper'
 RSpec.describe DocusignDtr::Models::Userinfo do
   subject { described_class.new }
   let(:attrs) { %i[accounts email family_name given_name name sub] }
-  let(:userinfo) { described_class.new(sub: 1234, accounts: accounts) }
+  let(:userinfo) { described_class.new(sub: 1234, accounts:) }
   let(:accounts) { nil }
 
   describe '#attributes' do

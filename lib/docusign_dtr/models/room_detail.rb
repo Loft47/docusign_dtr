@@ -78,7 +78,7 @@ module DocusignDtr
       attribute :property_type_id
       attribute :rejected_date
       attribute :relisting
-      attribute :room_contacts, Array[DocusignDtr::Models::Contact]
+      attribute :room_contacts, [DocusignDtr::Models::Contact]
       attribute :rooms
       attribute :seller1, DocusignDtr::Models::Contact
       attribute :seller2, DocusignDtr::Models::Contact

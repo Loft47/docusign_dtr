@@ -21,7 +21,7 @@ module DocusignDtr
       attribute :completed_date
       attribute :created_date
       attribute :display_order
-      attribute :documents, Array[DocusignDtr::Models::Document]
+      attribute :documents, [DocusignDtr::Models::Document]
       attribute :due_date_offset
       attribute :due_date_type_id
       attribute :is_approved
@@ -50,7 +50,7 @@ module DocusignDtr
       def activities
         return [] unless task_id
 
-        ::DocusignDtr::Activity.new(client: client).all_by_task_id(task_id)
+        ::DocusignDtr::Activity.new(client:).all_by_task_id(task_id)
       end
     end
   end

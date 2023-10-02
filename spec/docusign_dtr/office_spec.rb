@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Office do
-  subject { DocusignDtr::Office.new(client: client) }
+  subject { DocusignDtr::Office.new(client:) }
   let(:client) { double }
   let(:offices) { { 'offices' => [office] } }
   let(:office) { { id: 88, office_name: 'My Office', address: nil, phone: '555-5555' } }

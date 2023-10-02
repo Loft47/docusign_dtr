@@ -17,7 +17,7 @@ RSpec.describe DocusignDtr::Models::User do
   end
   subject do
     user = DocusignDtr::Models::User.new(
-      address: address,
+      address:,
       owners: [DocusignDtr::Models::Owner.new]
     )
     user.client = client

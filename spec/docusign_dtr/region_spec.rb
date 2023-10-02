@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Region do
-  subject { DocusignDtr::Region.new(client: client) }
+  subject { DocusignDtr::Region.new(client:) }
   let(:client) { double }
   let(:regions) { { 'regions' => [region] } }
   let(:region) do

@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaSpecialCircumstanceType do
-  subject { DocusignDtr::MetaSpecialCircumstanceType.new(client: client) }
+  subject { DocusignDtr::MetaSpecialCircumstanceType.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::Member do
-  subject { DocusignDtr::Member.new(client: client) }
+  subject { DocusignDtr::Member.new(client:) }
   let(:client) { double }
   let(:members) { { 'members' => [member] } }
   let(:member) do

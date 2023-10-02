@@ -20,7 +20,7 @@ module DocusignDtr
       attribute :longitude
       attribute :mls_id
       attribute :office_id
-      attribute :owners, Array[DocusignDtr::Models::Owner]
+      attribute :owners, [DocusignDtr::Models::Owner]
       attribute :room_id
       attribute :room_image_url
       attribute :room_name
@@ -64,19 +64,19 @@ module DocusignDtr
       def documents
         return [] unless room_id
 
-        ::DocusignDtr::Document.new(client: client).all_by_room_id(room_id)
+        ::DocusignDtr::Document.new(client:).all_by_room_id(room_id)
       end
 
       def task_lists
         return [] unless room_id
 
-        ::DocusignDtr::TaskList.new(client: client).all_by_room_id(room_id)
+        ::DocusignDtr::TaskList.new(client:).all_by_room_id(room_id)
       end
 
       def users
         return [] unless room_id
 
-        ::DocusignDtr::User.new(client: client).all_by_room_id(room_id)
+        ::DocusignDtr::User.new(client:).all_by_room_id(room_id)
       end
     end
   end

@@ -15,15 +15,15 @@ RSpec.describe DocusignDtr::Client do
     let(:hash) { { 'testResponse' => '99' } }
     let(:string) { 'testResponse' }
     it 'parses hash' do
-      expect(subject).to receive(:raw).with('/test', foo: 123).and_return(hash)
+      expect(subject).to receive(:raw).with('/test', { foo: 123 }).and_return(hash)
       expect(subject.get('/test', foo: 123)).to eq('test_response' => '99')
     end
     it 'parses array' do
-      expect(subject).to receive(:raw).with('/test', foo: 123).and_return(array)
+      expect(subject).to receive(:raw).with('/test', { foo: 123 }).and_return(array)
       expect(subject.get('/test', foo: 123)).to eq(['test_response' => '99'])
     end
     it 'parses string' do
-      expect(subject).to receive(:raw).with('/test', foo: 123).and_return(string)
+      expect(subject).to receive(:raw).with('/test', { foo: 123 }).and_return(string)
       expect(subject.get('/test', foo: 123)).to eq('testResponse')
     end
   end
@@ -31,16 +31,16 @@ RSpec.describe DocusignDtr::Client do
   describe '#raw' do
     it 'sends request to server' do
       mock
-      expect(subject.raw('/test', id: 47)).to include('response' => 'test')
+      expect(subject.raw('/test', { id: 47 })).to include('response' => 'test')
     end
 
     it 'handles errors' do
       mock(code: 401)
-      expect { subject.raw('/test', id: 47) }.to raise_error DocusignDtr::Unauthorized
+      expect { subject.raw('/test', { id: 47 }) }.to raise_error DocusignDtr::Unauthorized
       mock(code: 403)
-      expect { subject.raw('/test', id: 47) }.to raise_error DocusignDtr::Forbidden
+      expect { subject.raw('/test', { id: 47 }) }.to raise_error DocusignDtr::Forbidden
       mock(code: 500)
-      expect { subject.raw('/test', id: 47) }.to raise_error StandardError
+      expect { subject.raw('/test', { id: 47 }) }.to raise_error StandardError
     end
   end
 
@@ -79,9 +79,9 @@ RSpec.describe DocusignDtr::Client do
       .stub_request(:get, 'https://demo.rooms.docusign.com/restapi/v1/test?id=47')
       .with(
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'User-Agent': 'docusign_dtr',
-          'Authorization': 'Bearer token'
+          Authorization: 'Bearer token'
         }
       )
       .to_return(

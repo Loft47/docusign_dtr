@@ -14,7 +14,7 @@ module DocusignDtr
       attribute :longitude
       attribute :mls_id
       attribute :office_id
-      attribute :owners, Array[DocusignDtr::Models::Owner]
+      attribute :owners, [DocusignDtr::Models::Owner]
       attribute :room_id
       attribute :room_name
       attribute :status
@@ -22,7 +22,7 @@ module DocusignDtr
       attr_accessor :client
 
       def profile
-        ::DocusignDtr::Profile.new(client: client).find(user_id)
+        ::DocusignDtr::Profile.new(client:).find(user_id)
       end
     end
   end

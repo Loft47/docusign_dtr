@@ -20,7 +20,7 @@ module DocusignDtr
       def parse_url_response(url)
         params = URI.decode_www_form(URI(url).query)
         hash = Hash[*params.flatten]
-        OpenStruct.new(hash)
+        OpenStruct.new(hash) # rubocop:disable Style/OpenStructUse
       end
 
       private
@@ -48,14 +48,14 @@ module DocusignDtr
           state: @config.state,
           client_id: @config.integrator_key,
           redirect_uri: @config.redirect_uri
-        }.delete_if { |_, v| v.nil? }
+        }.compact
       end
 
       def base_headers
         {
           'Content-Type': 'application/x-www-form-urlencoded',
           'User-Agent': @config.application.to_s,
-          'Accept': '*/*'
+          Accept: '*/*'
         }
       end
 
@@ -64,7 +64,7 @@ module DocusignDtr
       end
 
       def handle_error(response)
-        DocusignDtr::Auth::Error.new(response: response).build
+        DocusignDtr::Auth::Error.new(response:).build
       end
     end
   end

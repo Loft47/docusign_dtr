@@ -17,13 +17,13 @@ module DocusignDtr
 
     def raw(page, params = {})
       full_path = [base_uri, page].join
-      response = self.class.get(full_path, query: params, headers: headers, timeout: 60)
+      response = self.class.get(full_path, query: params, headers:, timeout: 60)
       handle_error(response)
       response.parsed_response
     end
 
     def handle_error(response)
-      DocusignDtr::Auth::Error.new(response: response).build
+      DocusignDtr::Auth::Error.new(response:).build
     end
 
     def Document # rubocop:disable  Naming/MethodName
@@ -138,9 +138,9 @@ module DocusignDtr
 
     def headers
       {
-        'Authorization': "Bearer #{@token}",
+        Authorization: "Bearer #{@token}",
         'User-Agent': @application.to_s,
-        'Accept': 'application/json'
+        Accept: 'application/json'
       }
     end
 

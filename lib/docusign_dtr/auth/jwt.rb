@@ -11,12 +11,12 @@ module DocusignDtr
                      test_mode: true,
                      application: 'docusign_dtr')
         @config = DocusignDtr::Models::AuthConfig.new(
-          application: application,
-          integrator_key: integrator_key,
+          application:,
+          integrator_key:,
           private_key: OpenSSL::PKey::RSA.new(private_key),
-          redirect_uri: redirect_uri,
-          test_mode: test_mode,
-          user_guid: user_guid
+          redirect_uri:,
+          test_mode:,
+          user_guid:
         )
       end
       # rubocop:enable Metrics/ParameterLists, Lint/MissingSuper

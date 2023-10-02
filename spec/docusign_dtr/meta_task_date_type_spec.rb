@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaTaskDateType do
-  subject { DocusignDtr::MetaTaskDateType.new(client: client) }
+  subject { DocusignDtr::MetaTaskDateType.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

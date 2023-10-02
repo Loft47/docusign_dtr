@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 RSpec.describe DocusignDtr::MetaOriginOfLeadType do
-  subject { DocusignDtr::MetaOriginOfLeadType.new(client: client) }
+  subject { DocusignDtr::MetaOriginOfLeadType.new(client:) }
   let(:client) { double }
   let(:metas) { { 'entities' => [meta] } }
   let(:meta) do

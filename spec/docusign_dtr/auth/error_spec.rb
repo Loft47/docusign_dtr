@@ -1,9 +1,9 @@
 require_relative '../../spec_helper'
 
 RSpec.describe DocusignDtr::Auth::Error do
-  subject { DocusignDtr::Auth::Error.new(response: response) }
+  subject { DocusignDtr::Auth::Error.new(response:) }
 
-  let(:response) { double(code: code, parsed_response: parsed_response) }
+  let(:response) { double(code:, parsed_response:) }
   let(:code) { 200 }
   let(:parsed_response) { nil }
   let(:full_message) { "Error communicating: Response code #{code}" }
@@ -54,21 +54,21 @@ RSpec.describe DocusignDtr::Auth::Error do
       let(:code) { 400 }
 
       context 'missing consent' do
-        let(:parsed_response) { { "error": 'consent_required' } }
+        let(:parsed_response) { { error: 'consent_required' } }
         it 'returns correct error class' do
           expect { subject.build }.to raise_error(DocusignDtr::ConsentRequired, 'consent_required')
         end
       end
 
       context 'invalid grant' do
-        let(:parsed_response) { { "error": 'invalid_grant' } }
+        let(:parsed_response) { { error: 'invalid_grant' } }
         it 'returns correct error class' do
           expect { subject.build }.to raise_error(DocusignDtr::InvalidGrant, 'invalid_grant')
         end
       end
 
       context 'api limit exceeded' do
-        let(:parsed_response) { { "errorCode": 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED' } }
+        let(:parsed_response) { { errorCode: 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED' } }
         it 'returns correct error class' do
           expect { subject.build }.to raise_error(
             DocusignDtr::ApiLimitExceeded, 'HOURLY_APIINVOCATION_LIMIT_EXCEEDED'
@@ -77,7 +77,7 @@ RSpec.describe DocusignDtr::Auth::Error do
       end
 
       context 'standard / unknown error' do
-        let(:parsed_response) { { "errorCode": 'unknown error', "errorDetails": 'something went wrong' } }
+        let(:parsed_response) { { errorCode: 'unknown error', errorDetails: 'something went wrong' } }
         it 'returns correct error class' do
           expect { subject.build }.to raise_error(StandardError)
         end

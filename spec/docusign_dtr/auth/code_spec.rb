@@ -8,18 +8,18 @@ RSpec.describe DocusignDtr::Auth::Code do
   let(:test_mode) { true }
   subject do
     auth = described_class.new(
-      application: application,
-      integrator_key: integrator_key,
-      secret_key: secret_key,
-      redirect_uri: redirect_uri,
-      test_mode: test_mode
+      application:,
+      integrator_key:,
+      secret_key:,
+      redirect_uri:,
+      test_mode:
     )
     auth.token_response = DocusignDtr::Models::AuthTokenResponse.new(
       access_token: :some_token, refresh_token: :refresh_token
     )
     auth
   end
-  let(:auth_data) { { access_token: 'trust_no_one', token_type: 'Bearer', 'expires_in': 3600 }.to_json }
+  let(:auth_data) { { access_token: 'trust_no_one', token_type: 'Bearer', expires_in: 3600 }.to_json }
   let(:user_data) do
     {
       sub: '4799e5e9',
@@ -38,12 +38,12 @@ RSpec.describe DocusignDtr::Auth::Code do
   context '#initialize' do
     it 'assigns @config' do
       expect(subject.config).to have_attributes(
-        application: application,
-        integrator_key: integrator_key,
-        secret_key: secret_key,
+        application:,
+        integrator_key:,
+        secret_key:,
         state: :state,
-        redirect_uri: redirect_uri,
-        test_mode: test_mode
+        redirect_uri:,
+        test_mode:
       )
     end
   end
@@ -100,7 +100,7 @@ RSpec.describe DocusignDtr::Auth::Code do
   end
 
   def base_headers
-    { 'Accept': '*/*', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'application' }
+    { Accept: '*/*', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'application' }
   end
 
   def accept_headers
@@ -112,6 +112,6 @@ RSpec.describe DocusignDtr::Auth::Code do
   end
 
   def user_info_headers
-    { headers: base_headers.merge('Authorization': 'Bearer some_token') }
+    { headers: base_headers.merge(Authorization: 'Bearer some_token') }
   end
 end

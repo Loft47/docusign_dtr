@@ -9,12 +9,12 @@ RSpec.describe DocusignDtr::Auth::Jwt do
   let(:user_guid) { :user_guid }
   subject do
     DocusignDtr::Auth::Jwt.new(
-      application: application,
-      integrator_key: integrator_key,
-      private_key: private_key,
-      redirect_uri: redirect_uri,
-      test_mode: test_mode,
-      user_guid: user_guid
+      application:,
+      integrator_key:,
+      private_key:,
+      redirect_uri:,
+      test_mode:,
+      user_guid:
     )
   end
 
@@ -24,12 +24,12 @@ RSpec.describe DocusignDtr::Auth::Jwt do
   context '#initialize' do
     it 'assigns @config' do
       expect(subject.config).to have_attributes(
-        application: application,
-        integrator_key: integrator_key,
+        application:,
+        integrator_key:,
         private_key: :rsa_key,
-        redirect_uri: redirect_uri,
-        test_mode: test_mode,
-        user_guid: user_guid
+        redirect_uri:,
+        test_mode:,
+        user_guid:
       )
     end
   end
@@ -113,13 +113,13 @@ RSpec.describe DocusignDtr::Auth::Jwt do
       .stub_request(:post, 'https://account-d.docusign.com/oauth/token?assertion=trust_no_one&grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer')
       .with(
         headers: {
-          'Accept': '*/*',
+          Accept: '*/*',
           'Content-Type': 'application/x-www-form-urlencoded',
           'User-Agent': 'application'
         }
       )
       .to_return(
-        status: code, body: body, headers: { 'Content-Type': 'application/json' }
+        status: code, body:, headers: { 'Content-Type': 'application/json' }
       )
   end
 end
