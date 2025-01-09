@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.cert_chain    = ['certs/gem-public_cert.pem']
   spec.signing_key   = File.expand_path('~/.ssh/gem-private_key.pem') if $PROGRAM_NAME.end_with?('gem')
-  spec.required_ruby_version = '~> 3.2.2'
+  spec.required_ruby_version = '~> 3.3.6'
 
   raise 'RubyGems 2.5 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
 
@@ -25,9 +25,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  # rubocop:disable Gemspec/AddRuntimeDependency
   spec.add_runtime_dependency 'httparty', '~> 0.20'
   spec.add_runtime_dependency 'jwt', '~> 2.1'
   spec.add_runtime_dependency 'plissken', '~> 2'
   spec.add_runtime_dependency 'virtus', '~> 1.0'
+  # rubocop:enable Gemspec/AddRuntimeDependency
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
