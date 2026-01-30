@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.cert_chain    = ['certs/gem-public_cert.pem']
   spec.signing_key   = File.expand_path('~/.ssh/gem-private_key.pem') if $PROGRAM_NAME.end_with?('gem')
-  spec.required_ruby_version = '~> 3.3.6'
+  spec.required_ruby_version = '~> 3.4.0'
 
   raise 'RubyGems 2.5 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
 
