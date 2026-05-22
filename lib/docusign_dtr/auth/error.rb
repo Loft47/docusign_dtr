@@ -21,6 +21,8 @@ module DocusignDtr
           DocusignDtr::Forbidden
         when 204
           DocusignDtr::NoContent
+        when 429
+          DocusignDtr::ApiLimitExceeded
         else
           StandardError
         end
