@@ -87,5 +87,15 @@ RSpec.describe DocusignDtr::Auth::Error do
         end
       end
     end
+
+    context 'api limit exceeded' do
+      let(:code) { 429 }
+      let(:parsed_response) { { message: 'The maximum number of hourly API invocations has been exceeded.' } }
+      it 'returns correct error class' do
+        expect { subject.build }.to raise_error(
+          DocusignDtr::ApiLimitExceeded, 'The maximum number of hourly API invocations has been exceeded.'
+        )
+      end
+    end
   end
 end
